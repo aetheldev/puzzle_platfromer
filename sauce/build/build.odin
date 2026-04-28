@@ -8,11 +8,11 @@ There's too many project-specific settings here, so it's not worth the effort.
 */
 
 #+feature dynamic-literals
+#+feature using-stmt
 package build
 
 import path "core:path/filepath"
 import "core:fmt"
-import "core:os/os2"
 import "core:os"
 import "core:strings"
 import "core:log"
@@ -42,14 +42,17 @@ main :: proc() {
 	context.assertion_failure_proc = logger.assertion_failure_proc
 
 	game_kind:= Game_Kind.full
+	regen_shaders := true
 
 	release, debug : bool
-	for arg in os2.args {
+	for arg in os.args {
 		switch arg {
 			case "release": release = true
 			case "debug": debug = true
 			case "playtest": game_kind = .playtest
 			case "demo": game_kind = .demo
+			case "regen_shaders": regen_shaders = true
+			case "skip_shader_regen": regen_shaders = false
 		}
 	}
 
@@ -107,36 +110,69 @@ main :: proc() {
 		fprintln(f, tprintf("GAME_KIND :: Game_Kind.%v", game_kind))
 	}
 
-	// generate the shader
-	// docs: https://github.com/floooh/sokol-tools/blob/master/docs/sokol-shdc.md
+	// Shader regeneration is opt-in because the checked-in sokol/gfx bindings are
+	// older than the local shdc output format on current toolchains.
+	if regen_shaders {
+		shader_backend: string
+		shdc_dir: string
+		switch target {
+		case .windows:
+			shdc_dir = "sokol-shdc-win.exe"
+			shader_backend = "hlsl5"
+		case .mac:
+			shdc_dir = "sokol-shdc-mac"
+			shader_backend = "metal_macos"
+		case .linux:
+			shdc_dir = "sokol-shdc-linux"
+			shader_backend = "glsl430"
+		}
 
-	shader_backend: string
-	shdc_dir: string
-	switch target {
-	case .windows:
-		shdc_dir = "sokol-shdc-win.exe"
-		shader_backend = "hlsl5"
-	case .mac:
-		shdc_dir = "sokol-shdc-mac"
-		shader_backend = "metal_macos"
-	case .linux:
-		shdc_dir = "sokol-shdc-linux"
-		shader_backend = "glsl430"
+		utils.fire(
+			shdc_dir,
+			"-i",
+			"sauce/shader.glsl",
+			"-o",
+			"sauce/generated_shader.odin",
+			"-l",
+			shader_backend,
+			"-f",
+			"sokol_odin",
+		)
+
+		// Current local sokol-shdc outputs slightly newer Odin code than the
+		// checked-in sokol/gfx bindings use. Normalize generated names/layout hints
+		// back to the binding format used by this repo.
+		shader_file := "sauce/generated_shader.odin"
+		shader_bytes, shader_read_err := os.read_entire_file_from_path(shader_file, context.temp_allocator)
+		if shader_read_err != nil {
+			log.error(shader_read_err)
+			return
+		}
+		shader_text := string(shader_bytes)
+		shader_text, _ = strings.replace_all(shader_text, "desc.views[", "desc.images[", context.temp_allocator)
+		shader_text, _ = strings.replace_all(shader_text, ".texture.", ".", context.temp_allocator)
+		shader_text, _ = strings.replace_all(shader_text, "desc.texture_sampler_pairs[", "desc.image_sampler_pairs[", context.temp_allocator)
+		shader_text, _ = strings.replace_all(shader_text, ".view_slot =", ".image_slot =", context.temp_allocator)
+		for i in 0..<16 {
+			line := fmt.tprintf("        desc.attrs[%v].base_type = .FLOAT\n", i)
+			shader_text, _ = strings.replace_all(shader_text, line, "", context.temp_allocator)
+			line = fmt.tprintf("        desc.attrs[%v].base_type = .INT\n", i)
+			shader_text, _ = strings.replace_all(shader_text, line, "", context.temp_allocator)
+			line = fmt.tprintf("        desc.attrs[%v].base_type = .UINT\n", i)
+			shader_text, _ = strings.replace_all(shader_text, line, "", context.temp_allocator)
+		}
+		shader_write_err := os.write_entire_file(shader_file, shader_text)
+		if shader_write_err != nil {
+			log.error(shader_write_err)
+			return
+		}
 	}
 
-	utils.fire(
-		shdc_dir,
-		"-i",
-		"sauce/shader.glsl",
-		"-o",
-		"sauce/generated_shader.odin",
-		"-l",
-		shader_backend,
-		"-f",
-		"sokol_odin",
-	)
-
-	wd := os.get_current_directory()
+	wd, wd_err := os.get_working_directory(context.temp_allocator)
+	if wd_err != nil {
+		log.error(wd_err)
+		return
+	}
 
 	//utils.make_directory_if_not_exist("build")
 
@@ -151,24 +187,32 @@ main :: proc() {
 
 	// delete the build folder if it's release mode, that way we clean shit up
 	if release {
-		err := os2.remove_all(out_dir)
+		err := os.remove_all(out_dir)
 		if err != nil {
 			log.error(err)
 			return
 		}
 	}
 
-	full_out_dir_path := path.join({wd, out_dir})
+	full_out_dir_path, join_err := path.join({wd, out_dir}, context.temp_allocator)
+	if join_err != nil {
+		log.error(join_err)
+		return
+	}
 	log.info(full_out_dir_path)
 	utils.make_directory_if_not_exist(full_out_dir_path)
 
 	// build command
 	{
+		out_name := EXE_NAME
+		when ODIN_OS == .Windows {
+			out_name = EXE_NAME + ".exe"
+		}
 		c: [dynamic]string = {
 			"odin",
 			"build",
 			"sauce",
-			fmt.tprintf("-out:%v/%v.exe", out_dir, EXE_NAME),
+			fmt.tprintf("-out:%v/%v", out_dir, out_name),
 		}
 		if debug || !release {
 			append(&c, "-debug")
@@ -208,15 +252,14 @@ main :: proc() {
 			//assert(os.exists(dir), fmt.tprint("directory doesn't exist:", dir, file_name))
 			dest := fmt.tprintf("%v/%v", out_dir, file_name)
 			if !os.exists(dest) {
-				os2.copy_file(dest, src)
+				os.copy_file(dest, src)
 			}
 		}
 	}
 
-	// copy res folder
-	if release {
-		utils.copy_directory(fmt.tprintf("%v/res", out_dir), "res")
-	}
+	// copy res folder so the game can run from the build output directory in both
+	// debug and release configurations.
+	utils.copy_directory(fmt.tprintf("%v/res", out_dir), "res")
 
 	fmt.println("DONE in", time.diff(start_time, time.now()))
 }

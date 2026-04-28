@@ -89,3 +89,12 @@ Do not begin with:
 - full ECS rewrite
 
 Begin with one playable loop inside `game.odin` first.
+
+## Latest Odin Note
+
+This repo has been ported enough to build with current Odin on macOS.
+
+One remaining tooling caveat:
+- checked-in `sokol/gfx` bindings are older than current `sokol-shdc` generated Odin format
+- production build now regenerates shaders and then normalizes the generated file back into the repo binding format
+- if you do a full future Sokol upgrade, you can remove that normalization step and keep pure generated output

@@ -1,3 +1,4 @@
+#+feature using-stmt
 package main
 
 import "utils"
@@ -152,8 +153,8 @@ core_render_frame_end :: proc() {
 		}
 	}
 	
-	render_state.bind.images[IMG_tex0] = atlas.sg_image
-	render_state.bind.images[IMG_font_tex] = font.sg_image
+	render_state.bind.images[VIEW_tex0] = atlas.sg_image
+	render_state.bind.images[VIEW_font_tex] = font.sg_image
 
 	{
 		sg.update_buffer(
@@ -211,8 +212,8 @@ load_sprites_into_atlas :: proc() {
 		if img_name == .nil do continue
 		
 		path := fmt.tprint(img_dir, img_name, ".png", sep="")
-		png_data, succ := os.read_entire_file(path)
-		assert(succ, fmt.tprint(path, "not found"))
+		png_data, read_err := os.read_entire_file_from_path(path, context.temp_allocator)
+		assert(read_err == nil, fmt.tprint(path, " not found"))
 		
 		stbi.set_flip_vertically_on_load(1)
 		width, height, channels: i32
@@ -229,8 +230,6 @@ load_sprites_into_atlas :: proc() {
 	
 	// pack sprites into atlas
 	{
-		using stbrp
-
 		// the larger we make this, the longer startup time takes
 		LENGTH :: 1024
 		atlas.w = LENGTH
@@ -246,7 +245,7 @@ load_sprites_into_atlas :: proc() {
 			if img.width == 0 {
 				continue
 			}
-			append(&rects, stbrp.Rect{ id=auto_cast id, w=Coord(img.width+2), h=Coord(img.height+2) })
+			append(&rects, stbrp.Rect{ id=auto_cast id, w=stbrp.Coord(img.width+2), h=stbrp.Coord(img.height+2) })
 		}
 		
 		succ := stbrp.pack_rects(&cont, &rects[0], auto_cast len(rects))
@@ -319,15 +318,13 @@ font: Font
 // note, this is hardcoded to just be a single font for now. I haven't had the need for multiple fonts yet.
 // that'll probs change when we do localisation stuff. But that's farrrrr away. No need to complicate things now.
 load_font :: proc() {
-	using tt
-	
 	bitmap, _ := mem.alloc(font_bitmap_w * font_bitmap_h)
 	font_height := 15 // for some reason this only bakes properly at 15 ? it's a 16px font dou...
 	path := "res/fonts/alagard.ttf" // #user
-	ttf_data, err := os.read_entire_file(path)
-	assert(ttf_data != nil, "failed to read font")
+	ttf_data, err := os.read_entire_file_from_path(path, context.temp_allocator)
+	assert(err == nil, "failed to read font")
 	
-	ret := BakeFontBitmap(raw_data(ttf_data), 0, auto_cast font_height, auto_cast bitmap, font_bitmap_w, font_bitmap_h, 32, char_count, &font.char_data[0])
+	ret := tt.BakeFontBitmap(raw_data(ttf_data), 0, auto_cast font_height, auto_cast bitmap, font_bitmap_w, font_bitmap_h, 32, char_count, &font.char_data[0])
 	assert(ret > 0, "not enough space in bitmap")
 	
 	when ODIN_OS == .Windows {

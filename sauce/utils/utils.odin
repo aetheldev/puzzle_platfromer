@@ -5,15 +5,15 @@ This is just a big dump of random helpers.
 It needs to be in a package, because it's helpful to share across projects or other packages.
 Like the build.odin for example.
 
-*/
+ */
 
+#+feature using-stmt
 package utils
 
 import uuid "core:encoding/uuid"
 import "core:path/filepath"
 import "core:math/linalg/hlsl"
 import "core:os"
-import "core:os/os2"
 import "base:intrinsics"
 import "base:runtime"
 import "base:builtin"
@@ -192,18 +192,18 @@ rotation_from_direction :: proc(dir: Direction) -> f32 {
 	return 0
 }
 
-fire :: proc(cmd: ..string) -> os2.Error {
-	process, start_err := os2.process_start(os2.Process_Desc{
+fire :: proc(cmd: ..string) -> os.Error {
+	process, start_err := os.process_start(os.Process_Desc{
 		command=cmd,
-		stdout = os2.stdout,
-		stderr = os2.stderr,
+		stdout = os.stdout,
+		stderr = os.stderr,
 	})
 	if start_err != nil {
 		fmt.eprintln("Error:", start_err) 
 		return start_err
 	}
 
-	_, wait_err := os2.process_wait(process)
+	_, wait_err := os.process_wait(process)
 	if wait_err != nil {
 		fmt.eprintln("Error:", wait_err) 
 		return wait_err
@@ -213,20 +213,28 @@ fire :: proc(cmd: ..string) -> os2.Error {
 }
 
 copy_directory :: proc(dest_dir: string, src_dir: string) {
-	file_infos, err := os2.read_all_directory_by_path(src_dir, context.temp_allocator)
+	file_infos, err := os.read_all_directory_by_path(src_dir, context.temp_allocator)
 	if err != nil {
 		log.error(err)
 		return
 	}
 	make_directory_if_not_exist(dest_dir)
 	for fi in file_infos {
-		src_path := filepath.join({src_dir, fi.name}, context.temp_allocator)
-		dest_path := filepath.join({dest_dir, fi.name}, context.temp_allocator)
+		src_path, src_join_err := filepath.join({src_dir, fi.name}, context.temp_allocator)
+		if src_join_err != nil {
+			log.error(src_join_err)
+			continue
+		}
+		dest_path, dest_join_err := filepath.join({dest_dir, fi.name}, context.temp_allocator)
+		if dest_join_err != nil {
+			log.error(dest_join_err)
+			continue
+		}
 
 		if fi.type == .Directory {
 			copy_directory(dest_path, src_path)
 		} else {
-			os2.copy_file(dest_path, src_path)
+			os.copy_file(dest_path, src_path)
 		}
 	}
 }
@@ -246,7 +254,7 @@ crash_when_debug :: proc(args: ..any) {
 
 make_directory_if_not_exist :: proc(path: string) {
 	if !os.exists(path) {
-		err := os2.make_directory_all(path)
+		err := os.make_directory_all(path)
 		if err != nil {
 			log.error(err)
 		}

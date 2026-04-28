@@ -122,3 +122,5 @@ This folder explains asymmetric co-op puzzle design where both players share one
 - Lessons intentionally stay small.
 - `t09_shaders_bloom` uses manual Metal shader source because repo shader tool version does not match checked-in Sokol bindings.
 - That mismatch is fine for learning; later you can upgrade/pin versions together.
+- Main repo build now works on latest Odin after compatibility fixes.
+- Production `sauce/` build now regenerates shaders again, but the build script normalizes current `sokol-shdc` output back into the binding format used by this repo.

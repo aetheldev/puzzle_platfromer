@@ -10,4 +10,4 @@ mkdir -p build/linux_debug
   fi
 )
 
-odin run ./sauce/build -- target:linux
+odin run ./sauce/build
