@@ -2,15 +2,25 @@
 
 Goal: learn Odin + Sokol in order, then turn fundamentals into puzzle games and co-op ideas.
 
+Main long-term goal:
+- use standalone lessons/projects only as practice
+- then remake the same ideas inside `sauce/`
+- that is the production-ready path for your real game
+
 ## Structure
 
 ```txt
 learn/
   MASTER_TICKET_LIST.md
+  LEARNING_METHOD.md
   fundamentals/
     t01_hello_window
     ...
     t11_level_editor_basics
+  solutions/
+    fundamentals/
+    projects/
+    co_op/
   production_with_sauce/
   projects/
     sokoban/
@@ -42,6 +52,20 @@ zsh build.sh
 If you want one big ordered checklist, start with:
 
 `learn/MASTER_TICKET_LIST.md`
+
+## Learning Method
+
+If you want exercise-first learning, read:
+
+`learn/LEARNING_METHOD.md`
+
+Important:
+- `learn/fundamentals/` now contains lesson instructions only
+- `learn/projects/` now contains lesson instructions only
+- `learn/co_op/` prototype folders now contain lesson instructions only
+- runnable answers moved to `learn/solutions/fundamentals/`
+- runnable project/co-op answers moved to `learn/solutions/...`
+- lesson folders will not run until you write your own `main.odin`
 
 ## Fundamentals Order
 

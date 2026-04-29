@@ -2,6 +2,9 @@
 
 Goal: learn how to turn your small Sokol lessons into a real game built on this repo's `sauce/` blueprint.
 
+This is the destination folder.
+Everything you practice in fundamentals, projects, and co-op should eventually be reproducible inside `sauce/`.
+
 This folder is not about basics.
 This folder is about:
 - how `sauce/` is structured

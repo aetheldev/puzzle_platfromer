@@ -2,6 +2,11 @@
 
 Goal: one ordered path from beginner Odin/Sokol learning to real `sauce/` production game work.
 
+Main goal reminder:
+- standalone lessons are practice only
+- real destination is making those games inside `sauce/`
+- if you finish Sokoban, card game, or co-op prototype outside `sauce/`, next step is rebuilding them in `sauce/`
+
 How to use this file:
 - Do tickets in order.
 - Do not skip practice.
@@ -10,7 +15,7 @@ How to use this file:
 
 ## Progress Tracker
 
-- [ ] Ticket 000 - Make Sure Repo Builds
+- [x] Ticket 000 - Make Sure Repo Builds
 - [ ] Ticket 001 - Learn Folder Map
 - [ ] Ticket 010 - T01 Hello Window
 - [ ] Ticket 011 - T02 Shapes And Colors
@@ -100,7 +105,7 @@ Practice:
 ### Ticket 010 - T01 Hello Window
 
 Read:
-- `learn/fundamentals/t01_hello_window/main.odin`
+- `learn/fundamentals/t01_hello_window/LESSON.md`
 
 Do:
 - run `zsh build.sh`
@@ -117,7 +122,7 @@ If you do this, also try:
 ### Ticket 011 - T02 Shapes And Colors
 
 Read:
-- `learn/fundamentals/t02_shapes_colors/main.odin`
+- `learn/fundamentals/t02_shapes_colors/LESSON.md`
 - `sauce/sokol/gl/gl.odin`
 
 Do:
@@ -135,7 +140,7 @@ If you do this, also try:
 ### Ticket 012 - T03 Movement
 
 Read:
-- `learn/fundamentals/t03_movement/main.odin`
+- `learn/fundamentals/t03_movement/LESSON.md`
 
 Do:
 - run it
@@ -153,7 +158,7 @@ If you do this, also try:
 ### Ticket 013 - T04 Gravity And Jump
 
 Read:
-- `learn/fundamentals/t04_gravity_jump/main.odin`
+- `learn/fundamentals/t04_gravity_jump/LESSON.md`
 
 Do:
 - tune gravity and jump velocity
@@ -170,7 +175,7 @@ If you do this, also try:
 ### Ticket 014 - T05 Coyote And Jump Buffer
 
 Read:
-- `learn/fundamentals/t05_coyote_jump_buffer/main.odin`
+- `learn/fundamentals/t05_coyote_jump_buffer/LESSON.md`
 
 Do:
 - feel difference with timers on and off
@@ -187,7 +192,7 @@ If you do this, also try:
 ### Ticket 015 - T06 Wall Jump
 
 Read:
-- `learn/fundamentals/t06_wall_jump/main.odin`
+- `learn/fundamentals/t06_wall_jump/LESSON.md`
 
 Do:
 - tune wall slide and wall jump
@@ -204,7 +209,7 @@ If you do this, also try:
 ### Ticket 016 - T07 Tilemap
 
 Read:
-- `learn/fundamentals/t07_tilemap/main.odin`
+- `learn/fundamentals/t07_tilemap/LESSON.md`
 
 Do:
 - edit level text
@@ -222,7 +227,7 @@ If you do this, also try:
 ### Ticket 017 - T08 Camera
 
 Read:
-- `learn/fundamentals/t08_camera/main.odin`
+- `learn/fundamentals/t08_camera/LESSON.md`
 
 Do:
 - tune camera lerp
@@ -239,7 +244,7 @@ If you do this, also try:
 ### Ticket 018 - T09 Shader And Glow
 
 Read:
-- `learn/fundamentals/t09_shaders_bloom/main.odin`
+- `learn/fundamentals/t09_shaders_bloom/LESSON.md`
 
 Do:
 - run it
@@ -257,7 +262,7 @@ If you do this, also try:
 ### Ticket 019 - T10 Particles And Screen Shake
 
 Read:
-- `learn/fundamentals/t10_particles_screenshake/main.odin`
+- `learn/fundamentals/t10_particles_screenshake/LESSON.md`
 
 Do:
 - jump and land
@@ -276,7 +281,7 @@ If you do this, also try:
 ### Ticket 020 - T11 Level Editor Basics
 
 Read:
-- `learn/fundamentals/t11_level_editor_basics/main.odin`
+- `learn/fundamentals/t11_level_editor_basics/LESSON.md`
 
 Do:
 - paint walls
@@ -299,7 +304,7 @@ If you do this, also try:
 ### Ticket 030 - Sokoban Starter
 
 Read:
-- `learn/projects/sokoban/main.odin`
+- `learn/projects/sokoban/LESSON.md`
 - `learn/projects/sokoban/README.md`
 
 Do:
@@ -319,7 +324,7 @@ If you do this, also try:
 
 Read:
 - `learn/co_op/different_views_puzzle/README.md`
-- `learn/co_op/different_views_puzzle/prototype/main.odin`
+- `learn/co_op/different_views_puzzle/prototype/LESSON.md`
 
 Do:
 - play with two sets of controls
@@ -336,7 +341,7 @@ If you do this, also try:
 ### Ticket 032 - Turn-Based Card Game Starter
 
 Read:
-- `learn/projects/turn_based_card_game/README.md`
+- `learn/projects/turn_based_card_game/LESSON.md`
 
 Do:
 - define smallest card game rules you can finish
@@ -698,37 +703,38 @@ Practice:
 
 1. `learn/README.md`
 2. `learn/MASTER_TICKET_LIST.md`
-3. `learn/fundamentals/t01_hello_window/main.odin`
-4. `learn/fundamentals/t02_shapes_colors/main.odin`
-5. `learn/fundamentals/t03_movement/main.odin`
-6. `learn/fundamentals/t04_gravity_jump/main.odin`
-7. `learn/fundamentals/t05_coyote_jump_buffer/main.odin`
-8. `learn/fundamentals/t06_wall_jump/main.odin`
-9. `learn/fundamentals/t07_tilemap/main.odin`
-10. `learn/fundamentals/t08_camera/main.odin`
-11. `learn/fundamentals/t09_shaders_bloom/main.odin`
-12. `learn/fundamentals/t10_particles_screenshake/main.odin`
-13. `learn/fundamentals/t11_level_editor_basics/main.odin`
-14. `learn/projects/sokoban/main.odin`
-15. `learn/co_op/different_views_puzzle/prototype/main.odin`
-16. `learn/projects/turn_based_card_game/README.md`
-17. `learn/production_with_sauce/README.md`
-18. `learn/production_with_sauce/01_architecture_map.md`
-19. `learn/production_with_sauce/02_fundamentals_to_sauce.md`
-20. `learn/production_with_sauce/06_what_is_sokol.md`
-21. `learn/production_with_sauce/07_sokol_header_map.md`
-22. `learn/production_with_sauce/08_how_to_make_a_game.md`
-23. `learn/production_with_sauce/09_visual_effects_roadmap.md`
-24. `learn/production_with_sauce/10_genre_roadmap.md`
-25. `learn/production_with_sauce/12_turn_based_card_game_in_sauce.md`
-26. `learn/production_with_sauce/03_sokoban_in_sauce.md`
-27. `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
-28. `learn/production_with_sauce/05_production_tickets.md`
-29. `sauce/core_main.odin`
-30. `sauce/game.odin`
-31. `sauce/entity.odin`
-32. `sauce/core_render.odin`
-33. `sauce/build/build.odin`
+3. `learn/LEARNING_METHOD.md`
+4. `learn/fundamentals/t01_hello_window/LESSON.md`
+5. `learn/fundamentals/t02_shapes_colors/LESSON.md`
+6. `learn/fundamentals/t03_movement/LESSON.md`
+7. `learn/fundamentals/t04_gravity_jump/LESSON.md`
+8. `learn/fundamentals/t05_coyote_jump_buffer/LESSON.md`
+9. `learn/fundamentals/t06_wall_jump/LESSON.md`
+10. `learn/fundamentals/t07_tilemap/LESSON.md`
+11. `learn/fundamentals/t08_camera/LESSON.md`
+12. `learn/fundamentals/t09_shaders_bloom/LESSON.md`
+13. `learn/fundamentals/t10_particles_screenshake/LESSON.md`
+14. `learn/fundamentals/t11_level_editor_basics/LESSON.md`
+15. `learn/projects/sokoban/main.odin`
+16. `learn/co_op/different_views_puzzle/prototype/main.odin`
+17. `learn/projects/turn_based_card_game/README.md`
+18. `learn/production_with_sauce/README.md`
+19. `learn/production_with_sauce/01_architecture_map.md`
+20. `learn/production_with_sauce/02_fundamentals_to_sauce.md`
+21. `learn/production_with_sauce/06_what_is_sokol.md`
+22. `learn/production_with_sauce/07_sokol_header_map.md`
+23. `learn/production_with_sauce/08_how_to_make_a_game.md`
+24. `learn/production_with_sauce/09_visual_effects_roadmap.md`
+25. `learn/production_with_sauce/10_genre_roadmap.md`
+26. `learn/production_with_sauce/12_turn_based_card_game_in_sauce.md`
+27. `learn/production_with_sauce/03_sokoban_in_sauce.md`
+28. `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
+29. `learn/production_with_sauce/05_production_tickets.md`
+30. `sauce/core_main.odin`
+31. `sauce/game.odin`
+32. `sauce/entity.odin`
+33. `sauce/core_render.odin`
+34. `sauce/build/build.odin`
 
 ---
 

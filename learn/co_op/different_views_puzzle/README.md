@@ -55,16 +55,23 @@ Collision rule:
 
 ## Playable Prototype
 
-Runnable starter lives in:
+Exercise folder lives in:
 
 `learn/co_op/different_views_puzzle/prototype`
+
+Runnable answer lives in:
+
+`learn/solutions/co_op/different_views_puzzle/prototype`
 
 Run with:
 
 ```sh
-cd learn/co_op/different_views_puzzle/prototype
+cd learn/solutions/co_op/different_views_puzzle/prototype
 zsh build.sh
 ```
+
+Production goal after standalone practice:
+- `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
 
 ## Good Co-op Puzzle Variants
 
