@@ -1,36 +1,65 @@
-# V03 Burning Effect
+# V03 — Burning Effect
 
-## Step 1 - Concept
+## Goal
 
-Burning is more than orange color. It usually has a heat glow, upward embers, and some short-lived pulse or damage feel.
-Status effects feel better when they are readable instantly.
+Create a burning status effect with heat glow, upward embers, and a
+timer. Teaches readable status feedback.
 
-## Step 2 - Read This
+---
+
+## The Concept
+
+A burning target needs instant readability: "this thing is on fire."
+Three layers communicate this:
+1. Color overlay on the target (hot orange tint)
+2. Ember particles rising upward
+3. Radial glow expanding around the target
+
+The burn timer ticks down. When it ends, effects stop.
+
+This pattern applies to any status effect: poison, freeze, shock, buff.
+Different colors and motion, same structure.
+
+---
+
+## Read The Solution
 
 Open:
 - `learn/solutions/vfx/v03_burning_effect/main.odin`
 
-Read only:
-- `ignite`
-- `spawn_ember`
-- burn timer update
-- ember draw loop
+Key sections:
+- `ignite`: lines 37-39
+- `spawn_ember`: lines 41-53
+- Burn update + ember spawning: lines 75-124
 
-## Step 3 - Question
+---
 
-Why do ember particles mostly move upward instead of outward in all directions?
+## Exercises
 
-## Step 4 - Your Turn
+### Exercise 1 — Ignite
+Press Space → start burn timer.
 
-Close the solution.
-Write your own `main.odin` here.
+### Exercise 2 — Embers
+While burning, spawn upward particles.
 
-Task:
-- press one key to ignite target
-- add burn timer
-- spawn embers while burning
-- add stronger glow while active
+### Exercise 3 — Glow
+While burning, add expanding glow behind target.
 
-## Step 5 - Stop
+### Exercise 4 — Another Status (Challenge)
+Add a "frozen" effect: blue tint, slow drifting frost particles.
 
-Write it first.
+---
+
+## Exit Criteria
+
+- [ ] Ignite trigger works
+- [ ] Burn timer counts down and stops
+- [ ] Embers spawn upward
+- [ ] Target shows visual burn state
+- [ ] You can explain layered status readability
+
+---
+
+## Next Lesson
+
+`learn/vfx/v04_laser_beam`

@@ -1,51 +1,122 @@
-# Co-op Prototype Lesson
+# Co-op Asymmetric Puzzle — Project Lesson
 
-## Step 1 - Concept
+## Goal
 
-Good co-op puzzle design is not just two players moving around.
-It becomes interesting when each player has different information or different permissions in the same space.
+Build a local 2-player puzzle where each player has different collision
+rules. One sees bridges the other cannot walk on. Communication is the
+core mechanic.
 
-## Step 2 - Read This
+---
+
+## The Concept
+
+Good co-op puzzle design is NOT "two players do the same thing."
+It is "each player has incomplete information or incomplete ability."
+
+This prototype:
+- Red player (WASD) can walk on red bridges, not blue
+- Blue player (arrows) can walk on blue bridges, not red
+- Both must stand on their pressure plates to open a door
+- Both must reach goal tiles to win
+
+The FUN comes from communication: "I can see a path on my side, can
+you reach the plate on yours?"
+
+---
+
+## If You Know JS/React...
+
+In React, you might render different views per user with conditional
+rendering:
+```jsx
+{player.role === "red" && <RedBridges />}
+{player.role === "blue" && <BlueBridges />}
+```
+
+In this game prototype, both players see everything on one screen.
+The asymmetry is in collision, not visibility:
+
+```odin
+tile_blocks_player :: proc(tile: Tile, p: Player) -> bool {
+    switch tile {
+    case .bridge_red:  return !p.uses_red    // blocks blue
+    case .bridge_blue: return p.uses_red     // blocks red
+    case .door:        return !door_open
+    }
+}
+```
+
+Same world. Different rules per player. Simple code, deep puzzle design.
+
+---
+
+## Architecture
+
+### Data model
+```odin
+tiles: [ROWS][COLS]Tile    // wall, bridge_red, bridge_blue, plate, door, goal
+red: Player                // WASD
+blue: Player               // arrows
+door_open: bool
+```
+
+### Collision
+Each player checks tiles against their role. Red passes through
+red bridges, blocked by blue. Vice versa.
+
+### Win condition
+```odin
+won = door_open && red.on_goal && blue.on_goal
+```
+
+Both plates pressed → door opens. Both on goal → win.
+
+---
+
+## Read The Solution
 
 Open:
 - `learn/solutions/co_op/different_views_puzzle/prototype/main.odin`
 
-Read only:
-- `Tile`
-- `Player`
-- `tile_blocks_player`
-- `try_move`
-- `update_game_state`
+Key sections:
+- `Tile` enum: lines 33-41
+- `tile_blocks_player`: lines 114-127
+- `try_move`: lines 129-137
+- `update_game_state`: lines 139-147
 
-## Step 3 - Question
+---
 
-What makes this prototype asymmetric instead of just a 2-player version of the same puzzle?
+## Exercises
 
-## Step 4 - Your Turn
+### Exercise 1 — Two Players
+WASD for red, arrows for blue. Both move independently.
 
-Close the solution.
-In this folder, create your own `main.odin`.
+### Exercise 2 — Asymmetric Bridges
+Red-only and blue-only bridges with per-player collision.
 
-Task:
-- two players
-- one red-only bridge
-- one blue-only bridge
-- two pressure plates
-- door opens when both plates are active
+### Exercise 3 — Shared Door
+Both on plates → door opens.
 
-## Step 5 - Stop
+### Exercise 4 — Win Condition
+Both reach goal after door opens.
 
-Write it first.
+### Exercise 5 — New Room (Challenge)
+Design a room where red must guide blue verbally.
 
-## Practice After It Works
+---
 
-- add one more room
-- add one puzzle where one player must guide the other
-- add one object only one player can interact with
+## Exit Criteria
+
+- [ ] Two players move with separate controls
+- [ ] Per-player collision rules work
+- [ ] Shared puzzle state (door) works
+- [ ] Win condition requires both players
+- [ ] You can explain what makes this asymmetric
 
 ## Sauce Goal
 
-When this standalone version makes sense to you, next step is:
+When this works, read:
 - `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
+- `learn/advanced/a13_coop_game_in_sauce_plus_fx.md`
 
-That is the production-ready path inside `sauce/`.
+Then rebuild inside `sauce/game.odin`.

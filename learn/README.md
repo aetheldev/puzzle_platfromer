@@ -13,6 +13,10 @@ Main long-term goal:
 learn/
   MASTER_TICKET_LIST.md
   LEARNING_METHOD.md
+  odin_for_js_devs/
+    o01_first_program ... o16_debugging_and_printing
+  game_thinking_for_web_devs/
+    g01_game_loop_vs_react ... g08_gpu_basics_for_web_devs
   fundamentals/
     t01_hello_window
     ...
@@ -43,10 +47,10 @@ cd sauce/sokol
 zsh build_clibs_macos.sh
 ```
 
-Then run any lesson/project:
+Then run any runnable reference from `learn/solutions/...` or write your own `main.odin` first:
 
 ```sh
-cd learn/fundamentals/t04_gravity_jump
+cd learn/solutions/fundamentals/t04_gravity_jump
 zsh build.sh
 ```
 
@@ -55,6 +59,11 @@ zsh build.sh
 If you want one big ordered checklist, start with:
 
 `learn/MASTER_TICKET_LIST.md`
+
+Helpful templates:
+- `learn/ATTEMPT_TEMPLATE.md`
+- `learn/REVIEW_TEMPLATE.md`
+- `learn/SAUCE_MIGRATION_TICKETS.md`
 
 ## Learning Method
 
@@ -72,6 +81,26 @@ Important:
 - runnable project/co-op answers moved to `learn/solutions/...`
 - runnable VFX answers moved to `learn/solutions/vfx/`
 - lesson folders will not run until you write your own `main.odin`
+
+## Odin For JS/TS Developers (Start Here If New To Odin)
+
+`learn/odin_for_js_devs/`
+
+16 deep lessons mapping JS/TS concepts to Odin. Covers variables, types,
+procs, structs, enums, arrays, pointers, memory, context, imports, errors,
+loops, strings, defer, compiler errors, and debugging.
+
+Must complete before fundamentals if you are coming from JS/TS/React.
+
+## Game Thinking For Web Devs (After Odin Lessons)
+
+`learn/game_thinking_for_web_devs/`
+
+8 concept lessons bridging web thinking to game thinking. Covers game loop
+vs React, state without hooks, immediate vs retained mode, no async, pixel
+coordinates, polled input, delta time, and GPU basics.
+
+No code to write — pure mental model building. Complete before fundamentals.
 
 ## Fundamentals Order
 

@@ -43,6 +43,14 @@ Only move on when:
 
 ## Rule About Solutions
 
-- lesson folders under `learn/fundamentals/` are for your own code
-- runnable answers live under `learn/solutions/fundamentals/`
+- lesson folders under `learn/odin_for_js_devs/`, `learn/fundamentals/`, `learn/projects/`, `learn/co_op/`, and `learn/vfx/` are for your own code
+- runnable answers live under `learn/solutions/...`
 - do not open the solution until the lesson tells you what exact lines to read
+
+## Exit Rule
+
+Do not move on until:
+- it compiles or runs correctly
+- you can explain key lines
+- you can change one small thing safely
+- you can say how this helps later `sauce/` work

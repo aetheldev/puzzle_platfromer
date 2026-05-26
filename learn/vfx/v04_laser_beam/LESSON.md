@@ -1,34 +1,80 @@
-# V04 Laser Beam
+# V04 — Laser Beam
 
-## Step 1 - Concept
+## Goal
 
-Laser effects usually combine 3 parts: bright beam core, soft glow, and impact sparks where the beam hits.
-This is useful for mirror puzzles because the beam itself becomes readable and exciting.
+Draw a beam with core, glow, and impact sparks. Directly useful for
+mirror/laser puzzle games.
 
-## Step 2 - Read This
+---
+
+## The Concept
+
+A good beam has three layers:
+1. **Thin bright core** — the beam itself
+2. **Wider soft glow** — additive, lower opacity
+3. **Impact sparks** — particles where beam hits
+
+The beam can pulse in width or brightness to feel alive.
+Impact sparks sell the idea that energy is hitting something.
+
+This is directly the visual layer for mirror/laser puzzle mechanics.
+Gameplay traces beam segments; VFX draws them pretty.
+
+---
+
+## Read The Solution
 
 Open:
 - `learn/solutions/vfx/v04_laser_beam/main.odin`
 
-Read only:
-- `draw_beam_segment`
-- `spawn_spark`
-- impact particle update
+Key sections:
+- `draw_beam_segment`: lines 36-47
+- `spawn_spark`: lines 49-61
+- Frame update + rendering: lines 71-111
 
-## Step 3 - Question
+---
 
-Why is the impact effect important even if the beam itself is already visible?
+## Exercises
 
-## Step 4 - Your Turn
+### Exercise 1 — One Beam
+Draw a horizontal beam from left to right.
 
-Close the solution.
-Write your own `main.odin` here.
+### Exercise 2 — Pulse
+Vary beam width over time using sine wave.
 
-Task:
-- draw one beam segment
-- make it pulse
-- add impact sparks at the end
+### Exercise 3 — Impact Sparks
+At the beam endpoint, spawn small particles in random directions.
 
-## Step 5 - Stop
+### Exercise 4 — Multiple Segments (Challenge)
+Draw beam as 2 segments: emitter → mirror → target.
+Add impact at both endpoints.
 
-Write it first.
+---
+
+## Exit Criteria
+
+- [ ] Beam visible with core and glow
+- [ ] Beam pulses or feels alive
+- [ ] Impact sparks at endpoint
+- [ ] You can explain the 3-layer beam model
+- [ ] You see how this maps to mirror puzzle gameplay
+
+---
+
+## Congratulations
+
+You completed the VFX practice path.
+
+You now know how to:
+- Fake glow with layered quads
+- Give elements visual identity through motion
+- Create readable status effects
+- Draw beams with impact feedback
+
+These skills directly apply to:
+- Sokoban goal glow
+- Card game highlights
+- Co-op role clarity
+- Mirror/laser puzzle visuals
+
+Next: rebuild these inside `sauce/` using `learn/advanced/` guides.

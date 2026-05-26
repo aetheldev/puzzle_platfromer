@@ -1,53 +1,118 @@
-# Turn-Based Card Game Project Lesson
+# Turn-Based Card Game — Project Lesson
 
-## Step 1 - Concept
+## Goal
 
-Turn-based card games teach state machines, legal actions, turn flow, and deterministic game rules.
-This is excellent training for future networking because the actions are discrete and easy to replay.
+Build a 2-player hot-seat card game with deck, hand, discard,
+legal move validation, and turn flow. Best state machine practice.
 
-## Step 2 - Read This
+---
+
+## The Concept
+
+Card-shedding game rules:
+1. Colors: red, blue, green, yellow. Values: 0-4.
+2. Play a card if it matches top discard by color or value.
+3. If no legal play, draw one card.
+4. First empty hand wins.
+
+This teaches:
+- Turn-based state machines
+- Discrete legal action validation
+- Deck/hand/discard data management
+- Deterministic rules (key for future networking)
+
+---
+
+## If You Know JS/React...
+
+In React:
+```jsx
+const [deck, setDeck] = useState(initialDeck);
+const [hands, setHands] = useState([[], []]);
+const [currentPlayer, setCurrentPlayer] = useState(0);
+const playCard = (index) => {
+  // validate, move card, check win, advance turn
+  setHands(newHands); setCurrentPlayer(1 - currentPlayer);
+};
+```
+
+In Odin:
+- Deck, hands, discard are `[dynamic]Card`
+- Current player is an int
+- Direct mutation: `append(&discard, card)`
+- No setState. No re-render. Just mutate and draw next frame.
+
+---
+
+## Architecture
+
+### Data model
+```odin
+Card :: struct { color: Card_Color, value: int }
+players: [2]Player              // each has hand: [dynamic]Card
+deck: [dynamic]Card
+discard: [dynamic]Card
+current_player: int
+```
+
+### Turn flow
+1. Current player selects card
+2. Check if playable (matches color or value)
+3. If yes: move to discard, check win, advance turn
+4. If no legal play: draw from deck, advance turn
+
+### Deterministic design
+Every action is: "player N plays card X" or "player N draws."
+These can be logged and replayed. This is why card games are
+excellent networking preparation.
+
+---
+
+## Read The Solution
 
 Open:
 - `learn/solutions/projects/turn_based_card_game/main.odin`
 
-Read only:
-- `Card_Color`
-- `Card`
-- `setup_game`
-- `is_playable`
-- `play_selected_card`
-- `draw_if_blocked`
+Key sections:
+- `Card_Color`, `Card`: lines 46-56
+- `is_playable`: line 119
+- `setup_game`: lines 184-222
+- `play_selected_card`: lines 224-244
+- `draw_if_blocked`: lines 246-255
 
-## Step 3 - Question
+---
 
-Why is a turn-based card game easier to make deterministic than an action game?
+## Exercises
 
-## Step 4 - Your Turn
+### Exercise 1 — Deck And Deal
+Create deck. Shuffle. Deal 5 cards per player.
 
-Close the solution.
-In this folder, create your own `main.odin`.
+### Exercise 2 — Play Validation
+Check color or value match. Only allow legal plays.
 
-Task:
-- make 2 players
-- create deck, hand, discard
-- play card if color or value matches
-- draw one card if blocked
-- win when one hand is empty
+### Exercise 3 — Turn Switching
+After play or draw, switch current player.
 
-## Step 5 - Stop
+### Exercise 4 — Win Detection
+Empty hand = winner. Print result.
 
-Write it first.
+### Exercise 5 — Action Cards (Challenge)
+Add skip, reverse, draw-two. Handle their effects.
 
-## Practice After It Works
+---
 
-- add skip card
-- add reverse card
-- add simple CPU turn
-- add replay log idea in comments/notes
+## Exit Criteria
+
+- [ ] Deck, hand, discard work
+- [ ] Legal play validation correct
+- [ ] Turn switching works
+- [ ] Win detection works
+- [ ] You can explain why this is networking-friendly
 
 ## Sauce Goal
 
-When this standalone version makes sense to you, next step is:
+When this works, read:
 - `learn/production_with_sauce/12_turn_based_card_game_in_sauce.md`
+- `learn/advanced/a12_card_game_in_sauce_plus_fx.md`
 
-That is the production-ready path inside `sauce/`.
+Then rebuild inside `sauce/game.odin`.

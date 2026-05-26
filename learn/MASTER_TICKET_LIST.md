@@ -15,6 +15,30 @@ How to use this file:
 
 ## Progress Tracker
 
+- [ ] Ticket o01 - First Odin Program
+- [ ] Ticket o02 - Variables And Types
+- [ ] Ticket o03 - Procs Not Functions
+- [ ] Ticket o04 - Structs Not Classes
+- [ ] Ticket o05 - Enums And Switches
+- [ ] Ticket o06 - Arrays Slices Dynamic
+- [ ] Ticket o07 - Pointers And Refs
+- [ ] Ticket o08 - Memory Without GC
+- [ ] Ticket o09 - Context System
+- [ ] Ticket o10 - Imports And Packages
+- [ ] Ticket o11 - Error Handling
+- [ ] Ticket o12 - For Loops And Iteration
+- [ ] Ticket o13 - Strings And CStrings
+- [ ] Ticket o14 - Defer And Cleanup
+- [ ] Ticket o15 - Reading Compiler Errors
+- [ ] Ticket o16 - Debugging And Printing
+- [ ] Ticket g01 - Game Loop vs React
+- [ ] Ticket g02 - State Without Hooks
+- [ ] Ticket g03 - Immediate vs Retained Mode
+- [ ] Ticket g04 - No Async In Game Loop
+- [ ] Ticket g05 - Pixels Not Divs
+- [ ] Ticket g06 - Input Every Frame
+- [ ] Ticket g07 - Time And Delta Time
+- [ ] Ticket g08 - GPU Basics For Web Devs
 - [x] Ticket 000 - Make Sure Repo Builds
 - [ ] Ticket 001 - Learn Folder Map
 - [ ] Ticket 010 - T01 Hello Window
@@ -69,6 +93,37 @@ Success rule for every ticket:
 - break one thing
 - fix it yourself
 - add one tiny extra feature
+
+---
+
+## Phase -1 — Odin For JS/TS Developers
+
+Complete this before anything else if you are coming from JS/TS/React.
+
+Each lesson has:
+- deep JS comparison
+- Odin explanation
+- code snippets (not full solutions)
+- exercises
+- exit criteria
+
+Read: `learn/odin_for_js_devs/README.md`
+
+Then work through `o01` to `o16` in order.
+Each lesson is in `learn/odin_for_js_devs/oXX_name/LESSON.md`.
+Solutions in `learn/solutions/odin_for_js_devs/oXX_name/`.
+
+---
+
+## Phase -0.5 — Game Thinking For Web Developers
+
+Complete this after Odin lessons, before fundamentals.
+These are reading lessons. No code. Pure concept building.
+
+Read: `learn/game_thinking_for_web_devs/README.md`
+
+Then work through `g01` to `g08` in order.
+Each lesson is in `learn/game_thinking_for_web_devs/gXX_name/LESSON.md`.
 
 ---
 
@@ -310,8 +365,6 @@ If you do this, also try:
 - make tile `6` for pressure plate
 
 ---
-
-## Phase 2 - Small Standalone Projects
 
 ## Phase 1.5 - VFX Practice
 
@@ -839,7 +892,11 @@ Practice:
 1. `learn/README.md`
 2. `learn/MASTER_TICKET_LIST.md`
 3. `learn/LEARNING_METHOD.md`
-4. `learn/fundamentals/t01_hello_window/LESSON.md`
+4. `learn/odin_for_js_devs/o01_first_program/LESSON.md`
+5. ... through `o16_debugging_and_printing/LESSON.md`
+6. `learn/game_thinking_for_web_devs/g01_game_loop_vs_react/LESSON.md`
+7. ... through `g08_gpu_basics_for_web_devs/LESSON.md`
+8. `learn/fundamentals/t01_hello_window/LESSON.md`
 5. `learn/fundamentals/t02_shapes_colors/LESSON.md`
 6. `learn/fundamentals/t03_movement/LESSON.md`
 7. `learn/fundamentals/t04_gravity_jump/LESSON.md`
