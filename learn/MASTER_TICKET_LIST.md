@@ -1,5 +1,12 @@
 # Master Ticket List
 
+> New here? Read `learn/START_HERE.md` first. It checks setup and points you to
+> your starting track. This file is the full ordered checklist you work through
+> after that — find the next unchecked box and do it.
+>
+> Want videos / docs / real-game examples for any phase? See `learn/RESOURCES.md`.
+> Working on your own co-op "two lovers" game? See `learn/design/coop_lovers_puzzle/`.
+
 Goal: one ordered path from beginner Odin/Sokol learning to real `sauce/` production game work.
 
 Main goal reminder:
@@ -52,6 +59,7 @@ How to use this file:
 - [ ] Ticket 018 - T09 Shader And Glow
 - [ ] Ticket 019 - T10 Particles And Screen Shake
 - [ ] Ticket 020 - T11 Level Editor Basics
+- [ ] Ticket 020B - T12 Integration Room (combine t01-t11 into one playable room)
 - [ ] Ticket 021 - V01 Glow Highlight
 - [ ] Ticket 022 - V02 Elemental Orbs
 - [ ] Ticket 023 - V03 Burning Effect
@@ -363,6 +371,35 @@ Practice:
 If you do this, also try:
 - make tile `5` for door
 - make tile `6` for pressure plate
+
+### Ticket 020B - T12 Integration Room
+
+This is the bridge ticket. It combines t01-t11 into one playable thing.
+No new concepts. The skill is wiring known mechanics into one program.
+
+Read:
+- `learn/fundamentals/t12_integration_room/LESSON.md`
+
+Do (one layer at a time, run between each):
+- draw a tilemap room
+- add a moving player
+- add gravity and jump
+- add tile collision
+- add a following camera
+- add one goal tile with a win message
+
+Practice:
+- add a spike hazard that resets the player (lose condition)
+- design one room that is actually fun to traverse
+
+Exit:
+- player moves, jumps, collides, camera follows, goal works — all in ONE file
+- you can name which earlier lesson each piece came from
+- you can explain your fixed update order and why order matters
+
+Why it matters:
+- the jump from single mechanics to a full project is where most people quit
+- this removes that cliff before `projects/sokoban`
 
 ---
 
@@ -775,6 +812,10 @@ If you do this, also try:
 
 ### Ticket 071 - Production Co-op In Sauce
 
+This is where YOUR two-lovers game becomes real. See its design + build plan:
+- `learn/design/coop_lovers_puzzle/README.md` (design + milestones)
+- `learn/design/coop_lovers_puzzle/BUILD_PATH.md` (build with or without this repo)
+
 Read first:
 - `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
 
@@ -889,48 +930,50 @@ Practice:
 
 ## Recommended Exact Reading Order
 
-1. `learn/README.md`
-2. `learn/MASTER_TICKET_LIST.md`
-3. `learn/LEARNING_METHOD.md`
-4. `learn/odin_for_js_devs/o01_first_program/LESSON.md`
-5. ... through `o16_debugging_and_printing/LESSON.md`
-6. `learn/game_thinking_for_web_devs/g01_game_loop_vs_react/LESSON.md`
-7. ... through `g08_gpu_basics_for_web_devs/LESSON.md`
-8. `learn/fundamentals/t01_hello_window/LESSON.md`
-5. `learn/fundamentals/t02_shapes_colors/LESSON.md`
-6. `learn/fundamentals/t03_movement/LESSON.md`
-7. `learn/fundamentals/t04_gravity_jump/LESSON.md`
-8. `learn/fundamentals/t05_coyote_jump_buffer/LESSON.md`
-9. `learn/fundamentals/t06_wall_jump/LESSON.md`
-10. `learn/fundamentals/t07_tilemap/LESSON.md`
-11. `learn/fundamentals/t08_camera/LESSON.md`
-12. `learn/fundamentals/t09_shaders_bloom/LESSON.md`
-13. `learn/fundamentals/t10_particles_screenshake/LESSON.md`
-14. `learn/fundamentals/t11_level_editor_basics/LESSON.md`
-15. `learn/vfx/v01_glow_highlight/LESSON.md`
-16. `learn/vfx/v02_elemental_orbs/LESSON.md`
-17. `learn/vfx/v03_burning_effect/LESSON.md`
-18. `learn/vfx/v04_laser_beam/LESSON.md`
-19. `learn/projects/sokoban/LESSON.md`
-20. `learn/co_op/different_views_puzzle/prototype/LESSON.md`
-21. `learn/projects/turn_based_card_game/LESSON.md`
-22. `learn/production_with_sauce/README.md`
-23. `learn/production_with_sauce/01_architecture_map.md`
-24. `learn/production_with_sauce/02_fundamentals_to_sauce.md`
-25. `learn/production_with_sauce/06_what_is_sokol.md`
-26. `learn/production_with_sauce/07_sokol_header_map.md`
-27. `learn/production_with_sauce/08_how_to_make_a_game.md`
-28. `learn/production_with_sauce/09_visual_effects_roadmap.md`
-29. `learn/production_with_sauce/10_genre_roadmap.md`
-30. `learn/production_with_sauce/12_turn_based_card_game_in_sauce.md`
-31. `learn/production_with_sauce/03_sokoban_in_sauce.md`
-32. `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
-33. `learn/production_with_sauce/05_production_tickets.md`
-34. `sauce/core_main.odin`
-35. `sauce/game.odin`
-36. `sauce/entity.odin`
-37. `sauce/core_render.odin`
-38. `sauce/build/build.odin`
+1. `learn/START_HERE.md`
+2. `learn/README.md`
+3. `learn/MASTER_TICKET_LIST.md`
+4. `learn/LEARNING_METHOD.md`
+5. `learn/odin_for_js_devs/o01_first_program/LESSON.md`
+6. ... through `o16_debugging_and_printing/LESSON.md`
+7. `learn/game_thinking_for_web_devs/g01_game_loop_vs_react/LESSON.md`
+8. ... through `g08_gpu_basics_for_web_devs/LESSON.md`
+9. `learn/fundamentals/t01_hello_window/LESSON.md`
+10. `learn/fundamentals/t02_shapes_colors/LESSON.md`
+11. `learn/fundamentals/t03_movement/LESSON.md`
+12. `learn/fundamentals/t04_gravity_jump/LESSON.md`
+13. `learn/fundamentals/t05_coyote_jump_buffer/LESSON.md`
+14. `learn/fundamentals/t06_wall_jump/LESSON.md`
+15. `learn/fundamentals/t07_tilemap/LESSON.md`
+16. `learn/fundamentals/t08_camera/LESSON.md`
+17. `learn/fundamentals/t09_shaders_bloom/LESSON.md`
+18. `learn/fundamentals/t10_particles_screenshake/LESSON.md`
+19. `learn/fundamentals/t11_level_editor_basics/LESSON.md`
+20. `learn/fundamentals/t12_integration_room/LESSON.md`
+21. `learn/vfx/v01_glow_highlight/LESSON.md`
+22. `learn/vfx/v02_elemental_orbs/LESSON.md`
+23. `learn/vfx/v03_burning_effect/LESSON.md`
+24. `learn/vfx/v04_laser_beam/LESSON.md`
+25. `learn/projects/sokoban/LESSON.md`
+26. `learn/co_op/different_views_puzzle/prototype/LESSON.md`
+27. `learn/projects/turn_based_card_game/LESSON.md`
+28. `learn/production_with_sauce/README.md`
+29. `learn/production_with_sauce/01_architecture_map.md`
+30. `learn/production_with_sauce/02_fundamentals_to_sauce.md`
+31. `learn/production_with_sauce/06_what_is_sokol.md`
+32. `learn/production_with_sauce/07_sokol_header_map.md`
+33. `learn/production_with_sauce/08_how_to_make_a_game.md`
+34. `learn/production_with_sauce/09_visual_effects_roadmap.md`
+35. `learn/production_with_sauce/10_genre_roadmap.md`
+36. `learn/production_with_sauce/12_turn_based_card_game_in_sauce.md`
+37. `learn/production_with_sauce/03_sokoban_in_sauce.md`
+38. `learn/production_with_sauce/04_coop_puzzle_in_sauce.md`
+39. `learn/production_with_sauce/05_production_tickets.md`
+40. `sauce/core_main.odin`
+41. `sauce/game.odin`
+42. `sauce/entity.odin`
+43. `sauce/core_render.odin`
+44. `sauce/build/build.odin`
 
 ---
 

@@ -1,5 +1,8 @@
 # Different-View Co-op Puzzle
 
+> Building your own "two lovers" co-op game? This lesson is your starting point
+> and Milestones 1-3. Full design + build plan: `learn/design/coop_lovers_puzzle/`.
+
 Core idea: both players share same level, but each sees different truth.
 
 Examples:

@@ -1,197 +1,63 @@
-# Sokol Learning Roadmap
+# Learn — Odin + Sokol Game Dev
 
-Goal: learn Odin + Sokol in order, then turn fundamentals into puzzle games and co-op ideas.
+Goal: learn Odin and Sokol in order, build small puzzle and co-op games as
+practice, then rebuild them inside the real `sauce/` engine.
 
-Main long-term goal:
-- use standalone lessons/projects only as practice
-- then remake the same ideas inside `sauce/`
-- that is the production-ready path for your real game
+## New here? Do not read this file. Read this instead:
 
-## Structure
+`learn/START_HERE.md`
+
+`START_HERE.md` checks your setup, picks your starting track, and tells you the
+one next thing to do. This README is only a folder map for reference.
+
+## Folder Map
 
 ```txt
 learn/
-  MASTER_TICKET_LIST.md
-  LEARNING_METHOD.md
-  odin_for_js_devs/
-    o01_first_program ... o16_debugging_and_printing
-  game_thinking_for_web_devs/
-    g01_game_loop_vs_react ... g08_gpu_basics_for_web_devs
-  fundamentals/
-    t01_hello_window
-    ...
-    t11_level_editor_basics
-  vfx/
-  advanced/
-  solutions/
-    fundamentals/
-    projects/
-    co_op/
-    vfx/
-  production_with_sauce/
-  projects/
-    sokoban/
-    turn_based_card_game/
-  design/
-    puzzle_game_ideas/
-  co_op/
-    different_views_puzzle/
+  START_HERE.md             <- open this first
+  MASTER_TICKET_LIST.md     <- the full ordered checklist (your daily to-do)
+  LEARNING_METHOD.md        <- the write-from-memory daily loop
+  RESOURCES.md              <- external videos, docs, examples (by phase)
+  ATTEMPT_TEMPLATE.md       <- template for submitting code for review
+  REVIEW_TEMPLATE.md        <- template for reviewing code
+  SAUCE_MIGRATION_TICKETS.md<- how to move a standalone game into sauce/
+
+  odin_for_js_devs/         o01..o16  learn Odin via JS/TS comparison
+  game_thinking_for_web_devs/ g01..g08  game mindset, no code
+  fundamentals/             t01..t11  window, input, physics, tilemap, camera, shaders
+                            t12       integration room: combine it all (bridge to projects)
+  vfx/                      v01..v04  glow, elemental orbs, fire, laser
+  projects/                 sokoban, turn_based_card_game  first full games
+  co_op/                    different_views_puzzle  asymmetric two-player
+  design/                   puzzle_game_ideas  idea bank
+                            coop_lovers_puzzle  YOUR two-lovers game design + build plan
+  advanced/                 production-style rendering/FX reading path
+  production_with_sauce/    how to build features inside the real sauce/ engine
+  solutions/                runnable reference answers for every lesson
 ```
 
-## First Run
+## How Lesson Folders Work
 
-If macOS Sokol static libs are missing, build once:
+- Lesson folders (`odin_for_js_devs/`, `game_thinking_for_web_devs/`,
+  `fundamentals/`, `vfx/`, `projects/`, `co_op/`) contain **instructions only**.
+- You write your own `main.odin` in the lesson folder, then `zsh build.sh`.
+- Runnable answers live under `learn/solutions/...` — open only when a lesson
+  tells you which exact lines to read.
 
-```sh
-cd sauce/sokol
-zsh build_clibs_macos.sh
+## Big Picture Order
+
+```
+odin_for_js_devs  ->  game_thinking_for_web_devs  ->  fundamentals  ->  vfx
+   ->  projects + co_op  ->  production_with_sauce  ->  real sauce/ game
 ```
 
-Then run any runnable reference from `learn/solutions/...` or write your own `main.odin` first:
-
-```sh
-cd learn/solutions/fundamentals/t04_gravity_jump
-zsh build.sh
-```
-
-## Master Path
-
-If you want one big ordered checklist, start with:
-
-`learn/MASTER_TICKET_LIST.md`
-
-Helpful templates:
-- `learn/ATTEMPT_TEMPLATE.md`
-- `learn/REVIEW_TEMPLATE.md`
-- `learn/SAUCE_MIGRATION_TICKETS.md`
-
-## Learning Method
-
-If you want exercise-first learning, read:
-
-`learn/LEARNING_METHOD.md`
-
-Important:
-- `learn/fundamentals/` now contains lesson instructions only
-- `learn/projects/` now contains lesson instructions only
-- `learn/co_op/` prototype folders now contain lesson instructions only
-- `learn/vfx/` now contains lesson instructions only
-- `learn/advanced/` contains production-style reading path
-- runnable answers moved to `learn/solutions/fundamentals/`
-- runnable project/co-op answers moved to `learn/solutions/...`
-- runnable VFX answers moved to `learn/solutions/vfx/`
-- lesson folders will not run until you write your own `main.odin`
-
-## Odin For JS/TS Developers (Start Here If New To Odin)
-
-`learn/odin_for_js_devs/`
-
-16 deep lessons mapping JS/TS concepts to Odin. Covers variables, types,
-procs, structs, enums, arrays, pointers, memory, context, imports, errors,
-loops, strings, defer, compiler errors, and debugging.
-
-Must complete before fundamentals if you are coming from JS/TS/React.
-
-## Game Thinking For Web Devs (After Odin Lessons)
-
-`learn/game_thinking_for_web_devs/`
-
-8 concept lessons bridging web thinking to game thinking. Covers game loop
-vs React, state without hooks, immediate vs retained mode, no async, pixel
-coordinates, polled input, delta time, and GPU basics.
-
-No code to write — pure mental model building. Complete before fundamentals.
-
-## Fundamentals Order
-
-1. `learn/fundamentals/t01_hello_window`
-Window, frame loop, clear color.
-
-2. `learn/fundamentals/t02_shapes_colors`
-2D drawing with `sokol_gl`.
-
-3. `learn/fundamentals/t03_movement`
-Keyboard input, held keys, delta time.
-
-4. `learn/fundamentals/t04_gravity_jump`
-Gravity, velocity, jump, floor collision.
-
-5. `learn/fundamentals/t05_coyote_jump_buffer`
-Game feel: coyote time, jump buffer, variable jump.
-
-6. `learn/fundamentals/t06_wall_jump`
-Wall slide, wall jump.
-
-7. `learn/fundamentals/t07_tilemap`
-Level grid, tile collision.
-
-8. `learn/fundamentals/t08_camera`
-Camera follow, world vs screen space.
-
-9. `learn/fundamentals/t09_shaders_bloom`
-Manual shader pipeline and cheap glow.
-
-10. `learn/fundamentals/t10_particles_screenshake`
-Particles and camera shake.
-
-11. `learn/fundamentals/t11_level_editor_basics`
-Mouse painting, tile editing, spawn placement, console export.
-
-## Projects
-
-`learn/projects/sokoban`
-
-`learn/projects/turn_based_card_game`
-
-First full puzzle game using what you learned.
-
-First turn-based state-machine game path.
-
-Suggested next upgrades:
-1. Undo
-2. Many levels
-3. Better visuals
-4. Editor import/export
-5. New tile rules
-
-## Production Path
-
-`learn/production_with_sauce`
-
-This folder explains how to stop writing isolated lesson code and start building real game features inside `sauce/`.
-
-Use it when you want:
-- production architecture
-- real game state integration
-- entity-based gameplay in blueprint
-- renderer/input/build pipeline understanding
-- Sokoban and co-op puzzle implemented the repo-native way
-
-## Design Paths
-
-`learn/design/puzzle_game_ideas`
-
-Use this when you want to branch into new puzzle types after Sokoban.
-
-## Co-op Path
-
-`learn/co_op/different_views_puzzle`
-
-This folder explains asymmetric co-op puzzle design where both players share one level but do not share the same information or collision rules.
-
-## Recommended Learning Flow
-
-1. Finish `t01` through `t08`
-2. Build small experiments in each
-3. Study `t09` and `t10` for juice
-4. Build levels in `t11`
-5. Make `projects/sokoban`
-6. Branch into co-op prototype
+Standalone lessons are practice. The destination is rebuilding your games
+inside `sauce/`. Do not rush to `sauce/` early.
 
 ## Notes
 
-- Lessons intentionally stay small.
-- `t09_shaders_bloom` uses manual Metal shader source because repo shader tool version does not match checked-in Sokol bindings.
-- That mismatch is fine for learning; later you can upgrade/pin versions together.
-- Main repo build now works on latest Odin after compatibility fixes.
-- Production `sauce/` build now regenerates shaders again, but the build script normalizes current `sokol-shdc` output back into the binding format used by this repo.
+- `t09_shaders_bloom` uses manual Metal shader source because the repo shader
+  tool version does not match the checked-in Sokol bindings. Fine for learning.
+- Main repo build works on latest Odin after compatibility fixes.
+- Production `sauce/` build regenerates shaders; the build script normalizes
+  current `sokol-shdc` output back into this repo's binding format.

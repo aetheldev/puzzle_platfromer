@@ -140,3 +140,10 @@ This is the bridge to level design. Every puzzle game needs content.
 The faster you can make levels, the faster you can test ideas.
 
 Later in `sauce/`, this becomes a real editor mode inside your game.
+
+---
+
+## Next Lesson
+
+`learn/fundamentals/t12_integration_room` — combine everything you learned in
+t01–t11 into one playable room. This is the bridge into building full games.
