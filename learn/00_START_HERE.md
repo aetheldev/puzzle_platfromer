@@ -45,6 +45,13 @@ Then retry step 3.
 
 When all three pass, your environment is correct. You will not touch setup again.
 
+**macOS keyboard focus:** every graphics lesson's `build.sh` builds the game,
+wraps it in a tiny throwaway `.app` bundle in `/tmp`, and `open`s that. This
+is required on macOS — a binary run straight from the terminal (`./game`)
+launches as a background process whose window can never grab keyboard focus,
+so arrow keys type into the terminal instead. Always launch with `zsh build.sh`,
+never `./<binary>` directly. The shared logic lives in `learn/run_graphics.sh`.
+
 ---
 
 ## Step 1 — Pick Your Starting Track (answer one question)
@@ -98,22 +105,37 @@ The single ordered checklist of everything, start to finished games, is:
 Open it, find the next unchecked box, do that ticket. That file IS your
 to-do list for the whole journey. Tick boxes as you go.
 
-The big-picture order it follows:
+Folder numbers are a SORT order, not all "do next". Each folder is one of:
+**[DO]** build it now (main path), **[READ]** a reading path for later,
+**[REF]** lookup anytime. Follow only the [DO] folders in number order.
+
+The big-picture [DO] order it follows:
 
 ```
-10_odin_for_js_devs/      o01..o16   learn the language (JS comparison)
-20_game_thinking_for_web_devs/ g01..g08  learn the mindset (no code)
-30_fundamentals/          t01..t11   window, input, gravity, tilemap, camera, shaders
-30_fundamentals/t12       integration room: wire t01..t11 into one playable game
-40_vfx/                   v01..v04   glow, elements, fire, lasers
-60_projects/              sokoban, card game   first full games (standalone)
-70_co_op/                 asymmetric two-player puzzle prototype
-90_production_with_sauce/  how to rebuild it all inside the real sauce/ engine
-sauce/                     real production game work  <- the actual destination
+10_odin_for_js_devs/      [DO]  o01..o16   learn the language (JS comparison)
+20_game_thinking_for_web_devs/ [DO] g01..g08  learn the mindset (no code)
+30_fundamentals/          [DO]  t01..t11   window, input, gravity, tilemap, camera, shaders
+30_fundamentals/t12       [DO]  integration room: wire t01..t11 into one playable game
+40_vfx/                   [DO]  v01..v04   glow, elements, fire, lasers
+45_shaders_postfx/        [DO]  s00..s06   render-to-texture post-FX: darkness, fog, lights, CRT, grading, bloom
+60_projects/              [DO]  juice_playground, sokoban, card game  first full games
+70_co_op/                 [DO]  asymmetric two-player puzzle prototype
+90_production_with_sauce/ [DO]  how to rebuild it all inside the real sauce/ engine
+sauce/                          real production game work  <- the actual destination
 ```
 
-The whole point: standalone lessons are practice. The real goal is rebuilding
-your games inside `sauce/`. Do not rush to `sauce/` early.
+Off the [DO] line (open only when a lesson sends you there):
+```
+50_advanced/    [READ] AFTER 60_projects: redo a project with production FX
+80_design/      [REF]  idea bank + your own co-op game plan
+85_networking/  [READ] LAST: online co-op, only after LOCAL co-op works
+95_solutions/   [REF]  runnable answers for every lesson
+```
+
+The numbers on 50 / 85 are high ON PURPOSE so they sort to the bottom — not
+because they come late in the [DO] sequence. The whole point: standalone
+lessons are practice. The real goal is rebuilding your games inside `sauce/`.
+Do not rush to `sauce/` early.
 
 ---
 

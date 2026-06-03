@@ -459,6 +459,77 @@ Practice:
 - add impact sparks
 - imagine how this maps into mirror puzzle later
 
+## Phase 1.6 - Shaders & Post-Processing
+
+Hands-on, runnable post-FX. Render the game into a texture, then a fragment
+shader reinterprets the whole picture. This is how games look "pro" without
+better art. Do AFTER t09 (first shader) and the VFX tickets.
+
+### Ticket 024a - Post-FX Foundation (render to texture)
+
+Read:
+- `learn/45_shaders_postfx/README.md`
+- `learn/45_shaders_postfx/s00_foundation/LESSON.md`
+
+Do:
+- get the two-pass skeleton working: scene -> texture -> post shader -> window
+- confirm the vignette darkens the edges
+
+### Ticket 024b - Darkness / Torch
+
+Read:
+- `learn/45_shaders_postfx/s01_darkness/LESSON.md`
+
+Do:
+- one mouse-controlled light circle with an ambient floor
+
+Practice:
+- change radius and ambient
+- add flicker
+
+### Ticket 024c - Fog
+
+Read:
+- `learn/45_shaders_postfx/s02_fog/LESSON.md`
+
+Do:
+- GPU-noise fog that scrolls over time, heavier near the ground
+
+### Ticket 024d - Multiple 2D Lights
+
+Read:
+- `learn/45_shaders_postfx/s03_lights/LESSON.md`
+
+Do:
+- pass a uniform array of lights; accumulate them in the shader
+
+### Ticket 024e - CRT / Old TV
+
+Read:
+- `learn/45_shaders_postfx/s04_crt/LESSON.md`
+
+Do:
+- curvature + chromatic aberration + scanlines
+
+### Ticket 024f - Color Grading
+
+Read:
+- `learn/45_shaders_postfx/s05_grade/LESSON.md`
+
+Do:
+- contrast, saturation, split-toning; lock in one mood
+
+### Ticket 024g - Bloom / Glow
+
+Read:
+- `learn/45_shaders_postfx/s06_bloom/LESSON.md`
+
+Do:
+- bright-pass + blur + composite in one shader
+
+If you do this, also try:
+- run your sokoban or juice_playground scene through s01 darkness + s02 fog
+
 ## Phase 1.75 - Advanced Preview
 
 ### Ticket 025 - Advanced Rendering Mindset
@@ -528,7 +599,34 @@ Do:
 
 ## Phase 2 - Small Standalone Projects
 
+### Ticket 029b - Juice Playground (game feel)
+
+Do this right after the VFX tickets and BEFORE Sokoban. It teaches the cheap
+tricks that stop your games looking basic: jump dust, landing dust, run dust,
+squash & stretch, screen shake. Same particle pool as `t10`.
+
+Read:
+- `learn/60_projects/juice_playground/LESSON.md`
+- `learn/60_projects/juice_playground/README.md`
+
+Do:
+- run it; jump, land hard, run; watch the dust + squash
+
+Practice:
+- retune `LAND_DUST` count/speeds so landings feel heavier
+- speed up / slow down run dust spawn rate
+- explain what each tuned number changed
+
+If you do this, also try:
+- short jump (release jump early)
+- double jump that emits a ring of dust mid-air
+- tint dust brighter on harder landings
+
 ### Ticket 030 - Sokoban Starter
+
+The solution is already "juiced" using the functions from Ticket 029b: step
+dust, a directional burst on box pushes, screen shake, smooth player slide,
+and layered tiles. Read it after you can explain the juice playground.
 
 Read:
 - `learn/60_projects/sokoban/LESSON.md`
@@ -1006,6 +1104,9 @@ Practice:
 22. `learn/40_vfx/v02_elemental_orbs/LESSON.md`
 23. `learn/40_vfx/v03_burning_effect/LESSON.md`
 24. `learn/40_vfx/v04_laser_beam/LESSON.md`
+24a-g. `learn/45_shaders_postfx/` s00 foundation, then s01..s06
+       (darkness, fog, lights, CRT, grading, bloom)
+24h. `learn/60_projects/juice_playground/LESSON.md`
 25. `learn/60_projects/sokoban/LESSON.md`
 26. `learn/70_co_op/different_views_puzzle/prototype/LESSON.md`
 27. `learn/60_projects/turn_based_card_game/LESSON.md`

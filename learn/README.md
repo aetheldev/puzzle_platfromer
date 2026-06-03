@@ -12,38 +12,64 @@ the one next thing to do. This README is only a folder map for reference.
 
 ## Folder Map
 
-The folders and files are numbered so GitHub lists them in the exact order you
-should work through them, top to bottom.
+The numbers control the GitHub sort order. They do NOT all mean "do this
+next". That is what confused you. Each folder has a **TYPE**:
+
+| Tag | Meaning |
+|-----|---------|
+| **[DO]**  | A hands-on track. Write code here. Part of the main path. |
+| **[READ]** | A reading path you visit LATER (after you can already build). Not code to write now. |
+| **[REF]** | Reference. Open anytime you need it. Never "blocking" you. |
+
+So the rule is simple: **follow the [DO] folders in number order. Ignore
+[READ]/[REF] until something tells you to open them.** The high numbers on
+[READ]/[REF] folders are just there to push them to the bottom of the list —
+not because you do them late in the [DO] sequence.
 
 ```txt
 learn/
-  README.md                       <- you are here (folder map)
-  00_START_HERE.md                <- open this first
-  01_LEARNING_METHOD.md           <- the write-from-memory daily loop
-  02_MASTER_TICKET_LIST.md        <- the full ordered checklist (your daily to-do)
-  03_RESOURCES.md                 <- external videos, docs, examples (by phase)
+  README.md                       [REF]  you are here (folder map)
+  00_START_HERE.md                [DO]   open this first
+  01_LEARNING_METHOD.md           [REF]  the write-from-memory daily loop
+  02_MASTER_TICKET_LIST.md        [DO]   the full ordered checklist (your daily to-do)
+  03_RESOURCES.md                 [REF]  external videos, docs, examples (by phase)
 
-  10_odin_for_js_devs/            o01..o16  learn Odin via JS/TS comparison
-  20_game_thinking_for_web_devs/  g01..g08  game mindset, no code
-  30_fundamentals/                t01..t11  window, input, physics, tilemap, camera, shaders
-                                  t12       integration room: combine it all (bridge to projects)
-  40_vfx/                         v01..v04  glow, elemental orbs, fire, laser
-  50_advanced/                    production-style rendering/FX reading path
-  60_projects/                    sokoban, turn_based_card_game  first full games
-  70_co_op/                       different_views_puzzle  asymmetric two-player
-  80_design/                      puzzle_game_ideas  idea bank
-                                  coop_lovers_puzzle  YOUR two-lovers game design + build plan
-  85_networking/                  online rooms / remote co-op (read LAST)
-  90_production_with_sauce/       how to build features inside the real sauce/ engine
-  95_solutions/                   runnable reference answers for every lesson
+  10_odin_for_js_devs/            [DO]   o01..o16  learn Odin via JS/TS comparison
+  20_game_thinking_for_web_devs/  [DO]   g01..g08  game mindset, no code
+  30_fundamentals/                [DO]   t01..t11  window, input, physics, tilemap, camera, shaders
+                                         t12       integration room: combine it all
+  40_vfx/                         [DO]   v01..v04  glow, elemental orbs, fire, laser
+  45_shaders_postfx/              [DO]   s00..s06  render-to-texture post-FX:
+                                         darkness, fog, lights, CRT, grading, bloom
+  50_advanced/                    [READ] production rendering/FX reading path (AFTER projects)
+  60_projects/                    [DO]   juice_playground, sokoban, card game  first full games
+  70_co_op/                       [DO]   different_views_puzzle  asymmetric two-player
+  80_design/                      [REF]  puzzle_game_ideas idea bank; coop_lovers_puzzle YOUR game
+  85_networking/                  [READ] online rooms / remote co-op (read LAST)
+  90_production_with_sauce/       [DO]   build features inside the real sauce/ engine
+  95_solutions/                   [REF]  runnable reference answers for every lesson
 
-  templates/                      ATTEMPT / REVIEW / SAUCE_MIGRATION templates
+  templates/                      [REF]  ATTEMPT / REVIEW / SAUCE_MIGRATION templates
 ```
+
+### The [DO] path, in true order
+
+This is the ONLY sequence you follow. Everything else is support:
+
+```
+10 -> 20 -> 30 -> 40 -> 60 -> 70 -> 90 -> sauce/
+```
+
+`50_advanced` and `85_networking` sit at those numbers only so they sort
+near the bottom. You actually open `50` AFTER `60_projects` (it explains how
+to redo your project with production FX), and `85` LAST of all. `80_design`
+and `95_solutions` are lookup folders, open whenever a lesson points you in.
 
 ## How Lesson Folders Work
 
-- Lesson folders (`10_odin_for_js_devs/`, `20_game_thinking_for_web_devs/`,
-  `30_fundamentals/`, `40_vfx/`, `60_projects/`, `70_co_op/`) contain
+- The **[DO]** lesson folders (`10_odin_for_js_devs/`,
+  `20_game_thinking_for_web_devs/`, `30_fundamentals/`, `40_vfx/`,
+  `45_shaders_postfx/`, `60_projects/`, `70_co_op/`) contain
   **instructions only**.
 - You write your own `main.odin` in the lesson folder, then `zsh build.sh`.
 - Runnable answers live under `learn/95_solutions/...` — open only when a lesson
@@ -51,11 +77,20 @@ learn/
 
 ## Big Picture Order
 
+The [DO] path only (read the table above for what the other numbers mean):
+
 ```
 10_odin_for_js_devs  ->  20_game_thinking_for_web_devs  ->  30_fundamentals
-   ->  40_vfx  ->  60_projects + 70_co_op  ->  90_production_with_sauce
-   ->  real sauce/ game
+   ->  40_vfx  ->  45_shaders_postfx  ->  60_projects + 70_co_op
+   ->  90_production_with_sauce  ->  real sauce/ game
 ```
+
+Side trips off that line, when a lesson sends you:
+- `50_advanced/`  [READ] — open AFTER `60_projects`, to redo a project with
+  production-grade FX. It is reading, not new code to write from scratch.
+- `80_design/`    [REF]  — idea bank + your own co-op game plan. Browse anytime.
+- `85_networking/`[READ] — open LAST, only once a LOCAL co-op game works.
+- `95_solutions/` [REF]  — runnable answers; open the exact lines a lesson names.
 
 Standalone lessons are practice. The destination is rebuilding your games
 inside `sauce/`. Do not rush to `sauce/` early.
