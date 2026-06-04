@@ -33,6 +33,7 @@ learn/
   01_LEARNING_METHOD.md           [REF]  the write-from-memory daily loop
   02_MASTER_TICKET_LIST.md        [DO]   the full ordered checklist (your daily to-do)
   03_RESOURCES.md                 [REF]  external videos, docs, examples (by phase)
+  04_COOP_LOVERS_ROADMAP.md       [REF]  personal roadmap for the asymmetric co-op lovers game
 
   10_odin_for_js_devs/            [DO]   o01..o16  learn Odin via JS/TS comparison
   20_game_thinking_for_web_devs/  [DO]   g01..g08  game mindset, no code
@@ -89,6 +90,7 @@ Side trips off that line, when a lesson sends you:
 - `50_advanced/`  [READ] — open AFTER `60_projects`, to redo a project with
   production-grade FX. It is reading, not new code to write from scratch.
 - `80_design/`    [REF]  — idea bank + your own co-op game plan. Browse anytime.
+- `04_COOP_LOVERS_ROADMAP.md` [REF] — personal learning + production roadmap for your BOKURA/We Were Here-style game.
 - `85_networking/`[READ] — open LAST, only once a LOCAL co-op game works.
 - `95_solutions/` [REF]  — runnable answers; open the exact lines a lesson names.
 

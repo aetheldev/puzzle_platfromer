@@ -150,6 +150,8 @@ Do not rush to `sauce/` early.
   works and you can explain it.
 - **Want another explanation, a video, or real shipped-game code:** see
   `learn/03_RESOURCES.md` (curated external links, organized by phase).
+- **Want the personal roadmap for your BOKURA / We Were Here style co-op game:**
+  see `learn/04_COOP_LOVERS_ROADMAP.md`.
 - **Want to work on YOUR co-op "two lovers" game idea:** see
   `learn/80_design/coop_lovers_puzzle/` — design doc + how to build it with or
   without this repo. (Build it AFTER you finish fundamentals + the co-op lesson.)
@@ -168,6 +170,7 @@ Do not rush to `sauce/` early.
 | `01_LEARNING_METHOD.md` | Once, to internalize the daily loop. |
 | `README.md` | Reference. Map of folders. |
 | `03_RESOURCES.md` | When you want a video/doc/example for another angle. |
+| `04_COOP_LOVERS_ROADMAP.md` | Personal learning + production roadmap for your co-op lovers game. |
 | `80_design/coop_lovers_puzzle/` | When working on YOUR two-lovers game idea. |
 | `85_networking/` | LAST. When adding online rooms / remote co-op. |
 | `templates/ATTEMPT_TEMPLATE.md` | When you submit code for review. |
