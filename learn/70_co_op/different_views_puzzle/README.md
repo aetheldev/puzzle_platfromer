@@ -2,6 +2,11 @@
 
 > Building your own "two lovers" co-op game? This lesson is your starting point
 > and Milestones 1-3. Full design + build plan: `learn/80_design/coop_lovers_puzzle/`.
+>
+> Want the BOKURA look where each player sees a totally different WORLD (tech
+> robots vs nature animals) in the same room? That is the next lesson:
+> `learn/70_co_op/parallel_worlds_puzzle/` (explained in
+> `learn/80_design/coop_lovers_puzzle/PARALLEL_WORLDS.md`). Do THIS lesson first.
 
 Core idea: both players share same level, but each sees different truth.
 

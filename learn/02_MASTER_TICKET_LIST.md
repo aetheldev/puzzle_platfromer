@@ -74,6 +74,7 @@ How to use this file:
 - [ ] Ticket 029C - Advanced Co-op Game In Sauce Plus FX
 - [ ] Ticket 030 - Sokoban Starter
 - [ ] Ticket 031 - Co-op Prototype
+- [ ] Ticket 031B - Parallel-Worlds Co-op (BOKURA different-world look)
 - [ ] Ticket 032 - Turn-Based Card Game Starter
 - [ ] Ticket 040 - Architecture Map
 - [ ] Ticket 041 - Fundamentals To Sauce
@@ -89,6 +90,7 @@ How to use this file:
 - [ ] Ticket 063 - Production Turn-Based Card Game Plan
 - [ ] Ticket 070 - Production Sokoban In Sauce
 - [ ] Ticket 071 - Production Co-op In Sauce
+- [ ] Ticket 071B - Production Parallel-Worlds Co-op (BOKURA look in sauce)
 - [ ] Ticket 072 - Mirror Laser Puzzle Study
 - [ ] Ticket 073 - Roguelike Study Path
 - [ ] Ticket 074 - Turn-Based Card Game Study Path
@@ -663,6 +665,30 @@ If you do this, also try:
 - make one player see a clue, other executes it
 - add one object only one player can move
 
+### Ticket 031B - Parallel-Worlds Co-op (BOKURA different-world look)
+
+The "how can two players see two different worlds in the same room?" lesson.
+The trick: ONE world, drawn twice, a `Theme` picks each tile's/character's
+costume at draw time (tech robots vs nature animals). Same wall, two looks.
+
+Read:
+- `learn/80_design/coop_lovers_puzzle/PARALLEL_WORLDS.md` (the full explanation)
+- `learn/70_co_op/parallel_worlds_puzzle/README.md`
+- `learn/70_co_op/parallel_worlds_puzzle/prototype/LESSON.md`
+
+Do:
+- run the answer: `cd learn/95_solutions/co_op/parallel_worlds_puzzle/prototype && zsh build.sh`
+- confirm the SAME grid renders as two worlds (split screen)
+
+Practice:
+- turn off the truth fork (make collision identical) → pure cosmetic fork
+- add a new theme costume to one tile (look only, no gameplay change)
+- design one room solvable only by describing your world to your partner
+
+If you do this, also try:
+- run each view through a post-FX mood (`learn/45_shaders_postfx/`)
+- sketch how split screen becomes networked full-screen-per-client
+
 ### Ticket 032 - Turn-Based Card Game Starter
 
 Read:
@@ -934,6 +960,29 @@ If you do this, also try:
 - one player pushes special block
 - one player sees hidden hint only
 
+### Ticket 071B - Production Parallel-Worlds Co-op (BOKURA look in sauce)
+
+Rebuild the parallel-worlds prototype as a real sauce mode: two players from one
+keyboard, themed entities, themed tile costumes, shared collision + truth fork.
+
+Read first:
+- `learn/90_production_with_sauce/04_coop_puzzle_in_sauce.md`
+- `learn/90_production_with_sauce/13_parallel_worlds_coop_in_sauce.md` (exact
+  file/line references into `sauce/game.odin` + `sauce/entity.odin`)
+
+Do (small, each playable):
+- add `Player_Intent`, refactor demo player to read intent
+- add `player_a` / `player_b` kinds + `setup_lover`; spawn both; `fill_intents`
+- add `theme` field + themed draw proc (rect colors first, sprites later)
+- add tile grid + `draw_world(theme)` costume table
+- add shared collision proc, then the truth fork
+- add shared puzzle state + win + camera midpoint + reset
+
+If you do this, also try:
+- second room
+- post-FX mood per view (`learn/45_shaders_postfx/`)
+- (LAST, core change) split screen, then networking
+
 ### Ticket 072 - Mirror Laser Puzzle Study
 
 Read:
@@ -1109,6 +1158,8 @@ Practice:
 24h. `learn/60_projects/juice_playground/LESSON.md`
 25. `learn/60_projects/sokoban/LESSON.md`
 26. `learn/70_co_op/different_views_puzzle/prototype/LESSON.md`
+26b. `learn/80_design/coop_lovers_puzzle/PARALLEL_WORLDS.md`
+     + `learn/70_co_op/parallel_worlds_puzzle/prototype/LESSON.md` (BOKURA two-world look)
 27. `learn/60_projects/turn_based_card_game/LESSON.md`
 28. `learn/90_production_with_sauce/README.md`
 29. `learn/90_production_with_sauce/01_architecture_map.md`

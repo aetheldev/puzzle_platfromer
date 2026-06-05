@@ -152,6 +152,11 @@ Do not rush to `sauce/` early.
   `learn/03_RESOURCES.md` (curated external links, organized by phase).
 - **Want the personal roadmap for your BOKURA / We Were Here style co-op game:**
   see `learn/04_COOP_LOVERS_ROADMAP.md`.
+- **Stuck on "how do two players see two DIFFERENT worlds in the same room?"**
+  (BOKURA tech-robots vs nature-animals): read
+  `learn/80_design/coop_lovers_puzzle/PARALLEL_WORLDS.md` and run
+  `learn/70_co_op/parallel_worlds_puzzle/`. Short answer: one world, drawn twice,
+  a `Theme` picks each tile's costume at draw time.
 - **Want to work on YOUR co-op "two lovers" game idea:** see
   `learn/80_design/coop_lovers_puzzle/` — design doc + how to build it with or
   without this repo. (Build it AFTER you finish fundamentals + the co-op lesson.)

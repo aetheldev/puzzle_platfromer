@@ -46,6 +46,15 @@ Before moving feature into `sauce`, answer:
 - add shared puzzle state
 - add room complete condition
 
+### Co-op with two different worlds (BOKURA look)
+- add `Player_Intent` so two players don't share one input
+- add second player entity (player_a tech / player_b nature)
+- add `Theme` field + themed draw proc (same entity, two sprites)
+- add tile costume table (same grid, two looks)
+- add shared collision + optional truth fork (ground in one theme, void in other)
+- (LATER, core) split screen / second view
+- full guide: `learn/90_production_with_sauce/13_parallel_worlds_coop_in_sauce.md`
+
 ### Card Game
 - add turn state
 - add deck/hand/discard data

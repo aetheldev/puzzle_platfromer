@@ -243,6 +243,8 @@ Read:
 - `learn/90_production_with_sauce/04_coop_puzzle_in_sauce.md`
 - `learn/90_production_with_sauce/01_architecture_map.md`
 - `learn/templates/SAUCE_MIGRATION_TICKETS.md`
+- for the BOKURA two-world look in sauce (two players + theme fork, with exact
+  file/line references): `learn/90_production_with_sauce/13_parallel_worlds_coop_in_sauce.md`
 
 Add to `sauce/game.odin`:
 - `player2_handle`
@@ -323,16 +325,35 @@ Exit criteria:
 
 Do this after local same-screen version works.
 
-Options:
-- split screen
-- two cameras
-- player-specific visible layers
-- one player sees past, one sees present
-- one player sees symbols, one sees mechanisms
+THE TRICK (this is the part people get stuck on): there are NOT two worlds.
+There is ONE world (one tile grid, one set of entities, one collision truth),
+drawn TWICE with a different costume each time. A `Theme` enum (e.g. tech /
+nature) chosen at DRAW time picks each tile's and each character's sprite. Same
+wall → metal panel for one player, mossy log for the other. Same partner → robot
+to one, animal to the other. That is the whole BOKURA illusion.
+
+Two layers, build in order:
+- Cosmetic fork: every tile exists for both, collision identical, only the
+  sprite/palette differ per theme. Communication = describing what you see.
+- Truth fork: some tiles are solid ground in one theme and empty void in the
+  other. Communication = guiding each other across gaps you cannot see.
+
+Read + run (this is the missing lesson that explains and proves it):
+- `learn/80_design/coop_lovers_puzzle/PARALLEL_WORLDS.md`
+- `learn/70_co_op/parallel_worlds_puzzle/README.md`
+- `learn/70_co_op/parallel_worlds_puzzle/prototype/LESSON.md`
+- runnable answer: `learn/95_solutions/co_op/parallel_worlds_puzzle/prototype/`
+
+How each player gets their own view (same `draw_world(theme)` call either way):
+- split screen (prototype)
+- two cameras / two windows (local)
+- networked, full-screen per client (the real BOKURA setup)
+- optional moods per view via `learn/45_shaders_postfx/` (fog, CRT, grading, bloom)
 
 Design rule:
 - Same world, different truth.
 - Different truth must create communication, not confusion.
+- The two-worlds LOOK is a costume. It is empty without a puzzle under it.
 
 Exit criteria:
 - Each player has information the other does not.

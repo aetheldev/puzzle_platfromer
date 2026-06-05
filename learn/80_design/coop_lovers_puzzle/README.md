@@ -54,16 +54,21 @@ Both players see the whole room on one screen. The asymmetry is in what each can
 - This is EXACTLY what the repo's existing co-op prototype teaches. You already
   have a starting point: `learn/70_co_op/different_views_puzzle/`.
 
-### Approach B — Two views / split screen, asymmetric INFORMATION (HARDER)
-Each player sees only their own half (split screen, or each sees a different
-"layer" of the same room). One sees a clue the other needs.
-- This needs: two cameras OR two render regions, and a rule for what each player
-  can see.
-- Powerful (this is the We Were Here feeling) but more rendering work.
+### Approach B — Two views, different WORLD per player (the BOKURA look, HARDER)
+Each player sees the SAME room as a different world. BOKURA does this: one player
+sees a tech/future world (robots), the other a nature world (animals). The trick:
+there is ONE world, drawn twice with a different costume (a `Theme`) each time.
+Same wall → metal vs moss; same partner → robot vs animal. Some tiles can even be
+solid ground in one theme and void in the other (info/ability gap).
+- This needs: a `Theme` enum picked at draw time, and (for two people at once)
+  split screen, two cameras, or networked full-screen per client.
+- Powerful (the BOKURA / We Were Here feeling) but more rendering work.
 - Do this in version 2, after Approach A works.
+- Full explanation + working prototype: `PARALLEL_WORLDS.md` in this folder, and
+  `learn/70_co_op/parallel_worlds_puzzle/`.
 
 **Recommendation:** Build Approach A first. Get the *feeling* of "we solved this
-together" working with the simplest tech. Add split view later.
+together" working with the simplest tech. Add the two-worlds view later.
 
 ---
 
@@ -151,9 +156,13 @@ nothing to play.
 - Both lovers must reach a shared exit to "win".
 - DONE LOOKS LIKE: a tiny 2-room campaign you can finish with a friend.
 
-### Milestone 6 (optional, version 2) — Split / different view
-- Give each lover their own camera or visible layer.
-- Now the information gap is enforced by the rendering, not just trust.
+### Milestone 6 (optional, version 2) — Split / different WORLD view (BOKURA look)
+- Give each lover their own themed view of the SAME world: one tech, one nature.
+- The trick: one world, drawn twice, a `Theme` picks each tile's/character's
+  costume at draw time. Now the information gap is enforced by rendering, not just
+  trust.
+- Full explanation + runnable prototype: `PARALLEL_WORLDS.md` (this folder) and
+  `learn/70_co_op/parallel_worlds_puzzle/`.
 
 ### Milestone 7 (LAST, big) — Online rooms / remote co-op
 - Create a room, host it, friend connects over the internet.

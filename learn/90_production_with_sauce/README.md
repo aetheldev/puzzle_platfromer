@@ -63,7 +63,9 @@ Production path:
 10. Read `10_genre_roadmap.md`
 11. Save `11_sokol_upgrade_checklist.md` for future refresh
 12. Read `12_turn_based_card_game_in_sauce.md` if you want card/turn-based path
-13. Then read related advanced sauce docs in `learn/50_advanced/` for polish path
+13. Read `13_parallel_worlds_coop_in_sauce.md` for the BOKURA two-world look in sauce
+    (two players + theme fork; read after `04_coop_puzzle_in_sauce.md`)
+14. Then read related advanced sauce docs in `learn/50_advanced/` for polish path
 
 ## Important Mindset
 
