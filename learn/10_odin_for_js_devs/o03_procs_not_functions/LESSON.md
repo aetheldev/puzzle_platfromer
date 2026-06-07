@@ -359,12 +359,12 @@ Then rewrite it to pass the variable as a parameter instead.
 
 ## Exit Criteria
 
-- [ ] You can write procs with typed params and return types
-- [ ] You can use multiple return values
-- [ ] You can pass procs as parameters
-- [ ] You can explain why closures do not work in Odin
-- [ ] You understand what `"c"` calling convention means (even if you do not need it yet)
-- [ ] You know the difference between `add :: proc(...)` and `add := proc(...)`
+- [x] You can write procs with typed params and return types
+- [x] You can use multiple return values
+- [x] You can pass procs as parameters
+- [x] You can explain why closures do not work in Odin
+- [x] You understand what `"c"` calling convention means (even if you do not need it yet)
+- [x] You know the difference between `add :: proc(...)` and `add := proc(...)`
 
 ---
 
