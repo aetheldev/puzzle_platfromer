@@ -300,12 +300,12 @@ Then define the same color as four `f32` values and calculate total bytes
 
 ## Exit Criteria
 
-- [ ] Your program compiles and runs
-- [ ] You can declare variables with `:=` and `: type =`
-- [ ] You can define constants with `::`
-- [ ] You can cast between numeric types with `f32(x)`, `i32(x)`, etc.
-- [ ] You can explain why games use specific numeric types instead of one `number`
-- [ ] You understand the difference between `:=`, `::`, and `=`
+- [x] Your program compiles and runs
+- [x] You can declare variables with `:=` and `: type =`
+- [x] You can define constants with `::`
+- [x] You can cast between numeric types with `f32(x)`, `i32(x)`, etc.
+- [x] You can explain why games use specific numeric types instead of one `number`
+- [x] You understand the difference between `:=`, `::`, and `=`
 
 ---
 
