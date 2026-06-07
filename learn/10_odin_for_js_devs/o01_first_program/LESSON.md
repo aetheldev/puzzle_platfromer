@@ -301,10 +301,10 @@ Try using both `fmt.println` and `fmt.printf`.
 
 ## Exit Criteria
 
-- [ ] Your program compiles and runs with `zsh build.sh`
-- [ ] You can explain what `package`, `import`, `::`, `proc`, and `fmt.println` do
-- [ ] You can change the printed text without breaking anything
-- [ ] You understand the difference between `::` and `:=` (even if you have not used `:=` yet)
+- [x] Your program compiles and runs with `zsh build.sh`
+- [x] You can explain what `package`, `import`, `::`, `proc`, and `fmt.println` do
+- [x] You can change the printed text without breaking anything
+- [x] You understand the difference between `::` and `:=` (even if you have not used `:=` yet)
 
 ---
 
