@@ -22,11 +22,11 @@ How to use this file:
 
 ## Progress Tracker
 
-- [ ] Ticket o01 - First Odin Program
-- [ ] Ticket o02 - Variables And Types
-- [ ] Ticket o03 - Procs Not Functions
-- [ ] Ticket o04 - Structs Not Classes
-- [ ] Ticket o05 - Enums And Switches
+- [x] Ticket o01 - First Odin Program
+- [x] Ticket o02 - Variables And Types
+- [x] Ticket o03 - Procs Not Functions
+- [x] Ticket o04 - Structs Not Classes
+- [x] Ticket o05 - Enums And Switches
 - [ ] Ticket o06 - Arrays Slices Dynamic
 - [ ] Ticket o07 - Pointers And Refs
 - [ ] Ticket o08 - Memory Without GC
@@ -47,7 +47,7 @@ How to use this file:
 - [ ] Ticket g07 - Time And Delta Time
 - [ ] Ticket g08 - GPU Basics For Web Devs
 - [x] Ticket 000 - Make Sure Repo Builds
-- [ ] Ticket 001 - Learn Folder Map
+- [x] Ticket 001 - Learn Folder Map
 - [ ] Ticket 010 - T01 Hello Window
 - [ ] Ticket 011 - T02 Shapes And Colors
 - [ ] Ticket 012 - T03 Movement

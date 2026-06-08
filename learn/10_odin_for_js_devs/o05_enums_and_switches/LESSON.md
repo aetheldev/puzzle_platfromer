@@ -334,12 +334,12 @@ Fix them. This demonstrates why exhaustive switch is powerful.
 
 ## Exit Criteria
 
-- [ ] You can define enums with named values
-- [ ] You can switch on enums exhaustively
-- [ ] You can use `#partial switch` when appropriate
-- [ ] You can explain why enums are safer than strings or magic numbers
-- [ ] You can iterate over enum values
-- [ ] You understand `enum u8` for memory efficiency
+- [x] You can define enums with named values
+- [x] You can switch on enums exhaustively
+- [x] You can use `#partial switch` when appropriate
+- [x] You can explain why enums are safer than strings or magic numbers
+- [x] You can iterate over enum values
+- [x] You understand `enum u8` for memory efficiency
 
 ---
 
