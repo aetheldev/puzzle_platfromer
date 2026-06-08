@@ -374,12 +374,12 @@ Write a comment explaining what happened and why.
 
 ## Exit Criteria
 
-- [ ] You can define a struct type
-- [ ] You can create instances with field initialization
-- [ ] You can write procs that read structs (pass by value)
-- [ ] You can write procs that modify structs (pass by pointer with `^` and `&`)
-- [ ] You can explain why `b := a` copies the struct, not the reference
-- [ ] You understand why Odin has no classes, methods, or `this`
+- [x] You can define a struct type
+- [x] You can create instances with field initialization
+- [x] You can write procs that read structs (pass by value)
+- [x] You can write procs that modify structs (pass by pointer with `^` and `&`)
+- [x] You can explain why `b := a` copies the struct, not the reference
+- [x] You understand why Odin has no classes, methods, or `this`
 
 ---
 
