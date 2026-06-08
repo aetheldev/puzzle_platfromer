@@ -305,12 +305,12 @@ each value in place. Print before and after.
 
 ## Exit Criteria
 
-- [ ] You can create and use fixed arrays
-- [ ] You can create slices from fixed arrays with `[:]` and `[a:b]`
-- [ ] You can use `[dynamic]T`, `append`, and `delete`
-- [ ] You can iterate with value, reference, and index
-- [ ] You can explain why games prefer fixed arrays
-- [ ] You understand the memory difference between the three types
+- [x] You can create and use fixed arrays
+- [x] You can create slices from fixed arrays with `[:]` and `[a:b]`
+- [x] You can use `[dynamic]T`, `append`, and `delete`
+- [x] You can iterate with value, reference, and index
+- [x] You can explain why games prefer fixed arrays
+- [x] You understand the memory difference between the three types
 
 ---
 
