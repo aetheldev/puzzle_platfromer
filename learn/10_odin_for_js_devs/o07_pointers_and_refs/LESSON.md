@@ -287,12 +287,12 @@ pointer. Print all three to show only element 1 changed.
 
 ## Exit Criteria
 
-- [ ] You can explain what a pointer is (memory address)
-- [ ] You can use `^T` in proc parameters for mutation
-- [ ] You can use `&x` to pass addresses
-- [ ] You understand why Odin defaults to copying
-- [ ] You can check for nil pointers
-- [ ] You know when to use pointers vs values
+- [x] You can explain what a pointer is (memory address)
+- [x] You can use `^T` in proc parameters for mutation
+- [x] You can use `&x` to pass addresses
+- [x] You understand why Odin defaults to copying
+- [x] You can check for nil pointers
+- [x] You know when to use pointers vs values
 
 ---
 
