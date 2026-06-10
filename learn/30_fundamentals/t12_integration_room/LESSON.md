@@ -200,4 +200,6 @@ rules. The cliff is gone.
 
 ## Next Lesson
 
-`learn/60_projects/sokoban/LESSON.md`
+`learn/30_fundamentals/t13_point_and_click/LESSON.md`
+(mouse-driven escape-room tech — or skip ahead to
+`learn/60_projects/sokoban/LESSON.md` if you want Sokoban first)

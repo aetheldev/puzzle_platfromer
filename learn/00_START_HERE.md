@@ -116,6 +116,7 @@ The big-picture [DO] order it follows:
 20_game_thinking_for_web_devs/ [DO] g01..g08  learn the mindset (no code)
 30_fundamentals/          [DO]  t01..t11   window, input, gravity, tilemap, camera, shaders
 30_fundamentals/t12       [DO]  integration room: wire t01..t11 into one playable game
+30_fundamentals/t13       [DO]  point-and-click: hotspots, inventory, escape-room tech
 40_vfx/                   [DO]  v01..v04   glow, elements, fire, lasers
 45_shaders_postfx/        [DO]  s00..s06   render-to-texture post-FX: darkness, fog, lights, CRT, grading, bloom
 60_projects/              [DO]  juice_playground, sokoban, card game  first full games

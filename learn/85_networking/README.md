@@ -57,7 +57,13 @@ Read in order:
 5. `05_raw_sockets_path.md`
    Path B. From-scratch networking with Odin's `core:net`. Educational.
 
-6. `RESOURCES.md`
+6. `06_two_windows_local_to_network.md`
+   "How do I get TWO windows, one per player?" Answer: you run the game
+   twice — two processes. The ladder from one-window local co-op to two
+   windows on localhost to internet play. Read this when that question
+   starts bugging you (it will).
+
+7. `RESOURCES.md`
    Verified external links: Odin net docs, Steam docs, Valve's open-source
    networking library, and the famous Gaffer On Games networking articles.
 

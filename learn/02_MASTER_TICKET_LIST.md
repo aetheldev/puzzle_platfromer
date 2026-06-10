@@ -63,6 +63,7 @@ How to use this file:
 - [ ] Ticket 019 - T10 Particles And Screen Shake
 - [ ] Ticket 020 - T11 Level Editor Basics
 - [ ] Ticket 020B - T12 Integration Room (combine t01-t11 into one playable room)
+- [ ] Ticket 020C - T13 Point And Click (escape-room tech: hotspots, inventory, ordered code)
 - [ ] Ticket 021 - V01 Glow Highlight
 - [ ] Ticket 022 - V02 Elemental Orbs
 - [ ] Ticket 023 - V03 Burning Effect
@@ -407,6 +408,29 @@ Exit:
 Why it matters:
 - the jump from single mechanics to a full project is where most people quit
 - this removes that cliff before `60_projects/sokoban`
+
+### Ticket 020C - T13 Point And Click
+
+The genre tech for the two-detective escape game: hit-testing,
+hotspots-as-data, state flags, one-slot inventory, ordered-code lock.
+Technically simpler than the platformer lessons — design carries the genre.
+
+Read:
+- `learn/30_fundamentals/t13_point_and_click/LESSON.md`
+
+Do:
+- run it, escape the room, press R, speedrun it
+
+Practice:
+- add a rug hotspot hiding a coin
+- make the drawer need key AND painting moved
+- randomize the code so the note is the only source of truth
+
+If you do this, also try:
+- Exercise 5: friend reads the note, you press buttons — your co-op
+  detective game's core loop, played with zero networking
+- read `learn/85_networking/06_two_windows_local_to_network.md` to see
+  how a click becomes a network intent later
 
 ---
 
@@ -1152,6 +1176,7 @@ Practice:
 18. `learn/30_fundamentals/t10_particles_screenshake/LESSON.md`
 19. `learn/30_fundamentals/t11_level_editor_basics/LESSON.md`
 20. `learn/30_fundamentals/t12_integration_room/LESSON.md`
+20b. `learn/30_fundamentals/t13_point_and_click/LESSON.md`
 21. `learn/40_vfx/v01_glow_highlight/LESSON.md`
 22. `learn/40_vfx/v02_elemental_orbs/LESSON.md`
 23. `learn/40_vfx/v03_burning_effect/LESSON.md`
