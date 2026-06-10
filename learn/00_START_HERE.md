@@ -62,7 +62,7 @@ Answer this honestly. It decides your first file.
 
 - **No / only JavaScript / TypeScript / Python:**
   Start at `learn/10_odin_for_js_devs/o01_first_program/LESSON.md`.
-  This teaches Odin by comparing every concept to JS. Do `o01` through `o16`.
+  This teaches Odin by comparing every concept to JS. Do `o01` through `o19`.
 
 - **Yes, I know a systems or compiled language:**
   Skim `learn/10_odin_for_js_devs/README.md`, then jump to
@@ -112,7 +112,7 @@ Folder numbers are a SORT order, not all "do next". Each folder is one of:
 The big-picture [DO] order it follows:
 
 ```
-10_odin_for_js_devs/      [DO]  o01..o16   learn the language (JS comparison)
+10_odin_for_js_devs/      [DO]  o01..o19   learn the language (JS comparison)
 20_game_thinking_for_web_devs/ [DO] g01..g08  learn the mindset (no code)
 30_fundamentals/          [DO]  t01..t11   window, input, gravity, tilemap, camera, shaders
 30_fundamentals/t12       [DO]  integration room: wire t01..t11 into one playable game

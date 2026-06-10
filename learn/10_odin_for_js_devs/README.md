@@ -45,6 +45,9 @@ This track teaches all of that before you touch any game code.
 14. `o14_defer_and_cleanup`
 15. `o15_reading_compiler_errors`
 16. `o16_debugging_and_printing`
+17. `o17_maps_and_lookups`
+18. `o18_unions_and_variants`
+19. `o19_bit_sets_and_flags`
 
 ## How To Use
 
@@ -62,6 +65,6 @@ Runnable references live in:
 
 ## After This Track
 
-When you finish o16, move to:
+When you finish o19, move to:
 - `learn/20_game_thinking_for_web_devs/` (coming soon)
 - Then `learn/30_fundamentals/t01_hello_window`

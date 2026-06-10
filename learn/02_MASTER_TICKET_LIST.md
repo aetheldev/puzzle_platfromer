@@ -38,6 +38,9 @@ How to use this file:
 - [ ] Ticket o14 - Defer And Cleanup
 - [ ] Ticket o15 - Reading Compiler Errors
 - [ ] Ticket o16 - Debugging And Printing
+- [ ] Ticket o17 - Maps And Lookups
+- [ ] Ticket o18 - Unions And Variants
+- [ ] Ticket o19 - Bit Sets And Flags
 - [ ] Ticket g01 - Game Loop vs React
 - [ ] Ticket g02 - State Without Hooks
 - [ ] Ticket g03 - Immediate vs Retained Mode
@@ -121,7 +124,7 @@ Each lesson has:
 
 Read: `learn/10_odin_for_js_devs/README.md`
 
-Then work through `o01` to `o16` in order.
+Then work through `o01` to `o19` in order.
 Each lesson is in `learn/10_odin_for_js_devs/oXX_name/LESSON.md`.
 Solutions in `learn/95_solutions/odin_for_js_devs/oXX_name/`.
 
@@ -1134,7 +1137,7 @@ Practice:
 3. `learn/02_MASTER_TICKET_LIST.md`
 4. `learn/01_LEARNING_METHOD.md`
 5. `learn/10_odin_for_js_devs/o01_first_program/LESSON.md`
-6. ... through `o16_debugging_and_printing/LESSON.md`
+6. ... through `o19_bit_sets_and_flags/LESSON.md`
 7. `learn/20_game_thinking_for_web_devs/g01_game_loop_vs_react/LESSON.md`
 8. ... through `g08_gpu_basics_for_web_devs/LESSON.md`
 9. `learn/30_fundamentals/t01_hello_window/LESSON.md`

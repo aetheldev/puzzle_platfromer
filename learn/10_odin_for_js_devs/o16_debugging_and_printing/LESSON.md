@@ -327,7 +327,9 @@ You now understand:
 - Reading compiler errors
 - Practical debugging
 
-**Next step:** `learn/20_game_thinking_for_web_devs/` (coming soon)
-or jump directly to `learn/30_fundamentals/t01_hello_window`
+**Next step:** `learn/10_odin_for_js_devs/o17_maps_and_lookups`
+(three more data-shaping lessons: maps, unions, bit_sets — the tools
+idiomatic Odin game code is made of)
 
-You are ready for game code.
+After o19: `learn/20_game_thinking_for_web_devs/`
+or jump directly to `learn/30_fundamentals/t01_hello_window`
