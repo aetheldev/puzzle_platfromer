@@ -301,12 +301,12 @@ Iterate and print only active ones. No heap allocation anywhere.
 
 ## Exit Criteria
 
-- [ ] You can explain stack vs heap vs temp allocator
-- [ ] You can use `new` and `free` correctly
-- [ ] You can use `defer free(...)` for safety
-- [ ] You can explain why games avoid GC
-- [ ] You understand fixed pools as allocation-free pattern
-- [ ] You know when to use temp allocator vs heap
+- [x] You can explain stack vs heap vs temp allocator
+- [x] You can use `new` and `free` correctly
+- [x] You can use `defer free(...)` for safety
+- [x] You can explain why games avoid GC
+- [x] You understand fixed pools as allocation-free pattern
+- [x] You know when to use temp allocator vs heap
 
 ---
 
