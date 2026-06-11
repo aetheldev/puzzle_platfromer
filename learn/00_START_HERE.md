@@ -120,6 +120,8 @@ The big-picture [DO] order it follows:
 40_vfx/                   [DO]  v01..v04   glow, elements, fire, lasers
 45_shaders_postfx/        [DO]  s00..s06   render-to-texture post-FX: darkness, fog, lights, CRT, grading, bloom
 60_projects/              [DO]  juice_playground, sokoban, card game  first full games
+65_practice_games/        [SIDE] snake, pong, breakout, memory, idle RPG — confidence
+                                 builders; each unlocks at a specific lesson (see its README)
 70_co_op/                 [DO]  asymmetric two-player puzzle prototype
 90_production_with_sauce/ [DO]  how to rebuild it all inside the real sauce/ engine
 sauce/                          real production game work  <- the actual destination

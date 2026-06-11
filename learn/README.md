@@ -44,6 +44,9 @@ learn/
                                          darkness, fog, lights, CRT, grading, bloom
   50_advanced/                    [READ] production rendering/FX reading path (AFTER projects)
   60_projects/                    [DO]   juice_playground, sokoban, card game  first full games
+  65_practice_games/              [SIDE] snake, pong, breakout, memory match, idle RPG —
+                                         confidence builders, each unlocks after a specific
+                                         lesson ("you learned up to X -> you can build this")
   70_co_op/                       [DO]   different_views_puzzle  asymmetric two-player
   80_design/                      [REF]  puzzle_game_ideas idea bank; coop_lovers_puzzle YOUR game
   85_networking/                  [READ] online rooms / remote co-op (read LAST)

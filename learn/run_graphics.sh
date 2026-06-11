@@ -30,7 +30,8 @@ run_graphics() {
 			<plist version="1.0"><dict>
 			  <key>CFBundleExecutable</key><string>$NAME</string>
 			  <key>CFBundleIdentifier</key><string>dev.learn.$NAME</string>
-			  <key>CFBundleName</key><string>$NAME</string>
+			  <key>CFBundleName</key><string>learn-$NAME</string>
+			  <key>CFBundleDisplayName</key><string>learn-$NAME</string>
 			  <key>CFBundlePackageType</key><string>APPL</string>
 			  <key>NSHighResolutionCapable</key><true/>
 			</dict></plist>

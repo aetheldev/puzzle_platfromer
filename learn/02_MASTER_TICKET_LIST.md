@@ -27,8 +27,8 @@ How to use this file:
 - [x] Ticket o03 - Procs Not Functions
 - [x] Ticket o04 - Structs Not Classes
 - [x] Ticket o05 - Enums And Switches
-- [ ] Ticket o06 - Arrays Slices Dynamic
-- [ ] Ticket o07 - Pointers And Refs
+- [x] Ticket o06 - Arrays Slices Dynamic
+- [x] Ticket o07 - Pointers And Refs
 - [ ] Ticket o08 - Memory Without GC
 - [ ] Ticket o09 - Context System
 - [ ] Ticket o10 - Imports And Packages
@@ -77,6 +77,12 @@ How to use this file:
 - [ ] Ticket 029B - Advanced Card Game In Sauce Plus FX
 - [ ] Ticket 029C - Advanced Co-op Game In Sauce Plus FX
 - [ ] Ticket 030 - Sokoban Starter
+- [ ] (side) P01 Snake — after t07
+- [ ] (side) P02 Pong — after t03 (first two-player input!)
+- [ ] (side) P03 Breakout — after t10
+- [ ] (side) P04 Memory Match — after t13
+- [ ] (side) P05 Idle RPG — after o19 (console, no graphics)
+- [ ] (side) P06 Idle Widget — after p05 + t13 (tamagotchi corner window)
 - [ ] Ticket 031 - Co-op Prototype
 - [ ] Ticket 031B - Parallel-Worlds Co-op (BOKURA different-world look)
 - [ ] Ticket 032 - Turn-Based Card Game Starter
