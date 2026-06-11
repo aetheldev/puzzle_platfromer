@@ -1,0 +1,49 @@
+name: Windows Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      game_dir:
+        description: "Derlenecek oyun klasörü (odin package yolu)"
+        required: true
+        default: "learn/95_solutions/practice_games/p06_idle_widget"
+      exe_name:
+        description: "Çıktı exe adı"
+        required: true
+        default: "idle_widget"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # cl.exe / lib.exe / link.exe ortamını kur (hem sokol hem odin linker için)
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Install Odin
+        shell: pwsh
+        run: |
+          $release = Invoke-RestMethod https://api.github.com/repos/odin-lang/Odin/releases/latest
+          $asset = $release.assets | Where-Object name -like "*windows-amd64*" | Select-Object -First 1
+          Invoke-WebRequest $asset.browser_download_url -OutFile odin.zip
+          Expand-Archive odin.zip -DestinationPath "$env:USERPROFILE\odin"
+          $exe = Get-ChildItem "$env:USERPROFILE\odin" -Recurse -Filter odin.exe | Select-Object -First 1
+          Add-Content $env:GITHUB_PATH $exe.DirectoryName
+          & $exe.FullName version
+
+      - name: Build sokol C libs (windows)
+        shell: cmd
+        working-directory: sauce/sokol
+        run: build_clibs_windows.cmd
+
+      - name: Build game
+        shell: cmd
+        run: odin build ${{ inputs.game_dir }} -collection:sokol=sauce/sokol -out:${{ inputs.exe_name }}.exe -o:speed -subsystem:windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.exe_name }}-windows-x64
+          path: ${{ inputs.exe_name }}.exe
