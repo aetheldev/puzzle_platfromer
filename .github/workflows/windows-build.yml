@@ -25,11 +25,10 @@ jobs:
 
       - name: Install Odin
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          $release = Invoke-RestMethod https://api.github.com/repos/odin-lang/Odin/releases/latest
-          $asset = $release.assets | Where-Object name -like "*windows*" | Select-Object -First 1
-          if (-not $asset) { Write-Error "Windows asset bulunamadi"; exit 1 }
-          Invoke-WebRequest $asset.browser_download_url -OutFile odin.zip
+          gh release download --repo odin-lang/Odin --pattern "*windows*" --output odin.zip
           Expand-Archive odin.zip -DestinationPath "$env:USERPROFILE\odin"
           $exe = Get-ChildItem "$env:USERPROFILE\odin" -Recurse -Filter odin.exe | Select-Object -First 1
           Add-Content $env:GITHUB_PATH $exe.DirectoryName
