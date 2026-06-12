@@ -43,6 +43,9 @@ learn/
   45_shaders_postfx/              [DO]   s00..s06  render-to-texture post-FX:
                                          darkness, fog, lights, CRT, grading, bloom
   50_advanced/                    [READ] production rendering/FX reading path (AFTER projects)
+  55_pixel_art/                   [SIDE] Aseprite zero-to-hero (a01..a11): pixels, light,
+                                         color, icons, character, animation, tiles, scene,
+                                         export pipeline, Lua scripting — no code prerequisite
   60_projects/                    [DO]   juice_playground, sokoban, card game  first full games
   65_practice_games/              [SIDE] snake, pong, breakout, memory match, idle RPG —
                                          confidence builders, each unlocks after a specific

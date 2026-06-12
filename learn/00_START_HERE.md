@@ -119,6 +119,8 @@ The big-picture [DO] order it follows:
 30_fundamentals/t13       [DO]  point-and-click: hotspots, inventory, escape-room tech
 40_vfx/                   [DO]  v01..v04   glow, elements, fire, lasers
 45_shaders_postfx/        [DO]  s00..s06   render-to-texture post-FX: darkness, fog, lights, CRT, grading, bloom
+55_pixel_art/             [SIDE] Aseprite zero-to-hero: a01..a11 — icons, character,
+                                 animation, tiles, scene, export pipeline, Lua tooling
 60_projects/              [DO]  juice_playground, sokoban, card game  first full games
 65_practice_games/        [SIDE] snake, pong, breakout, memory, idle RPG — confidence
                                  builders; each unlocks at a specific lesson (see its README)

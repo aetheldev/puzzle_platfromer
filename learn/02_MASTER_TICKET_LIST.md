@@ -83,6 +83,10 @@ How to use this file:
 - [ ] (side) P04 Memory Match — after t13
 - [ ] (side) P05 Idle RPG — after o19 (console, no graphics)
 - [ ] (side) P06 Idle Widget — after p05 + t13 (tamagotchi corner window)
+- [ ] (side) ART a01-a04 — Aseprite basics: tool, lines, light, color (no prerequisite)
+- [ ] (side) ART a05-a07 — icons, detective character, animation
+- [ ] (side) ART a08-a09 — tiles (feeds t07), Rusty Lake scene mockup
+- [ ] (side) ART a10-a11 — export pipeline + Lua tooling (carbscode-style)
 - [ ] Ticket 031 - Co-op Prototype
 - [ ] Ticket 031B - Parallel-Worlds Co-op (BOKURA different-world look)
 - [ ] Ticket 032 - Turn-Based Card Game Starter
