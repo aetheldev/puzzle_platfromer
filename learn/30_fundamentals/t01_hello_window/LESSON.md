@@ -257,12 +257,12 @@ a gate: only print every 60 frames. Verify it prints once per second.
 
 ## Exit Criteria
 
-- [ ] Window opens and shows a clear color
-- [ ] You can explain what `sg.setup`, `begin_pass`, `end_pass`, `commit` do
-- [ ] You can explain why `context = rt_ctx` is needed
-- [ ] You can change the clear color
-- [ ] You can explain the init/frame/cleanup pattern
-- [ ] You can relate this to `g01_game_loop_vs_react`
+- [x] Window opens and shows a clear color
+- [x] You can explain what `sg.setup`, `begin_pass`, `end_pass`, `commit` do
+- [x] You can explain why `context = rt_ctx` is needed
+- [x] You can change the clear color
+- [x] You can explain the init/frame/cleanup pattern
+- [x] You can relate this to `g01_game_loop_vs_react`
 
 ---
 
