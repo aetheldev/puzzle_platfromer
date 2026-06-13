@@ -30,7 +30,7 @@ How to use this file:
 - [x] Ticket o06 - Arrays Slices Dynamic
 - [x] Ticket o07 - Pointers And Refs
 - [x] Ticket o08 - Memory Without GC
-- [ ] Ticket o09 - Context System
+- [x] Ticket o09 - Context System
 - [ ] Ticket o10 - Imports And Packages
 - [ ] Ticket o11 - Error Handling
 - [ ] Ticket o12 - For Loops And Iteration

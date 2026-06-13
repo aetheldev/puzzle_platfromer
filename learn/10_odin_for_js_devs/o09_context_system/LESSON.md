@@ -285,11 +285,11 @@ Write a comment explaining when these strings become invalid.
 
 ## Exit Criteria
 
-- [ ] You can explain what `context` carries
-- [ ] You understand implicit passing (no explicit parameter)
-- [ ] You understand scoped modification
-- [ ] You can explain `context = rt_ctx` in Sokol callbacks
-- [ ] You know what temp allocator is and when it resets
+- [x] You can explain what `context` carries
+- [x] You understand implicit passing (no explicit parameter)
+- [x] You understand scoped modification
+- [x] You can explain `context = rt_ctx` in Sokol callbacks
+- [x] You know what temp allocator is and when it resets
 
 ---
 
