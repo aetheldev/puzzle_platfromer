@@ -286,12 +286,12 @@ odin run . -collection:sokol=../../sauce/sokol
 
 ## Exit Criteria
 
-- [ ] You can import standard library packages
-- [ ] You can use aliased imports (`import sg "sokol/gfx"`)
-- [ ] You understand package = directory
-- [ ] You understand multi-file packages share declarations
-- [ ] You know there is no npm — dependencies are vendored
-- [ ] You can explain the `-collection:` flag
+- [x] You can import standard library packages
+- [x] You can use aliased imports (`import sg "sokol/gfx"`)
+- [x] You understand package = directory
+- [x] You understand multi-file packages share declarations
+- [x] You know there is no npm — dependencies are vendored
+- [x] You can explain the `-collection:` flag
 
 ---
 
