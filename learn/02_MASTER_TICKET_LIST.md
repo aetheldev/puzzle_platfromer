@@ -31,24 +31,24 @@ How to use this file:
 - [x] Ticket o07 - Pointers And Refs
 - [x] Ticket o08 - Memory Without GC
 - [x] Ticket o09 - Context System
-- [ ] Ticket o10 - Imports And Packages
-- [ ] Ticket o11 - Error Handling
-- [ ] Ticket o12 - For Loops And Iteration
-- [ ] Ticket o13 - Strings And CStrings
-- [ ] Ticket o14 - Defer And Cleanup
-- [ ] Ticket o15 - Reading Compiler Errors
-- [ ] Ticket o16 - Debugging And Printing
-- [ ] Ticket o17 - Maps And Lookups
-- [ ] Ticket o18 - Unions And Variants
-- [ ] Ticket o19 - Bit Sets And Flags
-- [ ] Ticket g01 - Game Loop vs React
-- [ ] Ticket g02 - State Without Hooks
-- [ ] Ticket g03 - Immediate vs Retained Mode
-- [ ] Ticket g04 - No Async In Game Loop
-- [ ] Ticket g05 - Pixels Not Divs
-- [ ] Ticket g06 - Input Every Frame
-- [ ] Ticket g07 - Time And Delta Time
-- [ ] Ticket g08 - GPU Basics For Web Devs
+- [x] Ticket o10 - Imports And Packages
+- [x] Ticket o11 - Error Handling
+- [x] Ticket o12 - For Loops And Iteration
+- [x] Ticket o13 - Strings And CStrings
+- [x] Ticket o14 - Defer And Cleanup
+- [x] Ticket o15 - Reading Compiler Errors
+- [x] Ticket o16 - Debugging And Printing
+- [x] Ticket o17 - Maps And Lookups
+- [x] Ticket o18 - Unions And Variants
+- [x] Ticket o19 - Bit Sets And Flags
+- [x] Ticket g01 - Game Loop vs React
+- [x] Ticket g02 - State Without Hooks
+- [x] Ticket g03 - Immediate vs Retained Mode
+- [x] Ticket g04 - No Async In Game Loop
+- [x] Ticket g05 - Pixels Not Divs
+- [x] Ticket g06 - Input Every Frame
+- [x] Ticket g07 - Time And Delta Time
+- [x] Ticket g08 - GPU Basics For Web Devs
 - [x] Ticket 000 - Make Sure Repo Builds
 - [x] Ticket 001 - Learn Folder Map
 - [ ] Ticket 010 - T01 Hello Window
