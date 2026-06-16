@@ -51,6 +51,7 @@ learn/
                                          confidence builders, each unlocks after a specific
                                          lesson ("you learned up to X -> you can build this")
   70_co_op/                       [DO]   different_views_puzzle  asymmetric two-player
+  75_sauce_bridge/                [DO]   visual-first ports: Snake/Tetris/Sokoban/Parallel Worlds in sauce style
   80_design/                      [REF]  puzzle_game_ideas idea bank; coop_lovers_puzzle YOUR game
   85_networking/                  [READ] online rooms / remote co-op (read LAST)
   90_production_with_sauce/       [DO]   build features inside the real sauce/ engine
@@ -64,7 +65,7 @@ learn/
 This is the ONLY sequence you follow. Everything else is support:
 
 ```
-10 -> 20 -> 30 -> 40 -> 60 -> 70 -> 90 -> sauce/
+10 -> 20 -> 30 -> 40 -> 60 -> 70 -> 75 -> 90 -> sauce/
 ```
 
 `50_advanced` and `85_networking` sit at those numbers only so they sort
@@ -89,7 +90,7 @@ The [DO] path only (read the table above for what the other numbers mean):
 ```
 10_odin_for_js_devs  ->  20_game_thinking_for_web_devs  ->  30_fundamentals
    ->  40_vfx  ->  45_shaders_postfx  ->  60_projects + 70_co_op
-   ->  90_production_with_sauce  ->  real sauce/ game
+   ->  75_sauce_bridge  ->  90_production_with_sauce  ->  real sauce/ game
 ```
 
 Side trips off that line, when a lesson sends you:

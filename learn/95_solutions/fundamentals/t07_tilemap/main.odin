@@ -146,11 +146,13 @@ event :: proc "c" (e: ^sapp.Event) {
 // axis=0 → horizontal, axis=1 → vertical
 resolve_axis :: proc(axis: int) {
     // Test the 4 corners of the player
+    right := player.x + player.w - 1
+    bottom := player.y + player.h - 1
     corners := [4][2]f32{
         { player.x,            player.y            },
-        { player.x + player.w, player.y            },
-        { player.x,            player.y + player.h },
-        { player.x + player.w, player.y + player.h },
+        { right,               player.y            },
+        { player.x,            bottom              },
+        { right,               bottom              },
     }
     for corner in corners {
         col := int(corner[0] / TILE)

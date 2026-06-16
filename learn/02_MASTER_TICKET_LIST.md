@@ -89,6 +89,9 @@ How to use this file:
 - [ ] (side) ART a10-a11 — export pipeline + Lua tooling (carbscode-style)
 - [ ] Ticket 031 - Co-op Prototype
 - [ ] Ticket 031B - Parallel-Worlds Co-op (BOKURA different-world look)
+- [ ] Ticket 031C - Visual-First Sauce Bridge Mindset
+- [ ] Ticket 031D - Snake/Tetris/Sokoban Sauce Bridge Practice
+- [ ] Ticket 031E - Parallel-Worlds Sauce Bridge (main target)
 - [ ] Ticket 032 - Turn-Based Card Game Starter
 - [ ] Ticket 040 - Architecture Map
 - [ ] Ticket 041 - Fundamentals To Sauce

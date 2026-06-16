@@ -18,10 +18,12 @@ things you know. That is the point: proving to yourself you can.
 | p04 | **Memory Match** | `t13 point and click` | hit-testing, hidden state, turn logic | NO — solo flight |
 | p05 | **Idle RPG** | `o19 (language track done)` | the WHOLE o-track: structs, enums, unions, maps, bit_sets, rand — no graphics needed | YES — full solution |
 | p06 | **Idle Widget** | `p05 + t13` | p05 in a tiny corner-of-screen window: auto-combat, rect-art items, 7-segment digits, click-to-equip/shop | YES — full solution |
+| p16 | **Level Devil** | `t08 camera` | fake walls, crumble tiles, spike traps, trigger traps, moving platforms, deceptive level design | YES — full solution |
 
-Two have solutions (p01 to show the shape, p05 because it is big).
-Three deliberately have NONE. "Solo flight" means: you have flown
-with an instructor eleven times; this plane you fly alone. Getting
+Three have solutions (p01 to show the shape, p05 because it is big,
+p16 because moving platform math is slippery). Two deliberately have
+NONE. "Solo flight" means: you have flown with an instructor eleven
+times; this plane you fly alone. Getting
 stuck and unsticking YOURSELF is the confidence mechanic. If truly
 stuck >1 day, the ATTEMPT/REVIEW templates in `learn/templates/`
 exist.
@@ -42,6 +44,11 @@ exist.
   drops, equip decisions. Console only, zero graphics — proves the
   o-track alone can build a real game. (Steam Market for drops is a
   Steamworks economy feature — real, but years away; park it.)
+- **p16 Level Devil** — platformer where the level lies to you.
+  Fake walls, crumble floors, trigger spikes, moving platforms.
+  Teaches tile state machines, trigger systems, and the art of
+  teaching the player through death.
+
 - **p06 Idle Widget** — p05 grown a body: a tamagotchi-sized window
   you park in a screen corner while you work. Auto-combat with HP
   bars and hit flashes, items as rect-art (rarity = border color),
@@ -57,6 +64,7 @@ lesson when you want to consolidate. Recommended natural points:
 ```
 after t07  -> p01 snake          (1-2 evenings)
 after t10  -> p03 breakout       (2-3 evenings; do p02 pong first if t03..t05 felt shaky)
+after t08  -> p16 level devil    (3-5 evenings; the deceptive platformer)
 after t13  -> p04 memory match   (1-2 evenings)
 o-track done, any time -> p05 idle rpg  (a week of evenings; pure language practice)
 after p05 + t13 -> p06 idle widget      (2-3 evenings; p05 logic + a face)
