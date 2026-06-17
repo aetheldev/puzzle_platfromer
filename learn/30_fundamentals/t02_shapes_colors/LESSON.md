@@ -184,12 +184,12 @@ The foreground width should be a percentage of some "health" value.
 
 ## Exit Criteria
 
-- [ ] You can draw rectangles with `draw_rect` or raw `sgl` calls
-- [ ] You can draw lines
-- [ ] You understand `sgl.ortho()` sets up 2D coordinates
-- [ ] You understand the submit-then-flush pattern
-- [ ] You can use `sapp.frame_count()` to animate position
-- [ ] You relate this to Canvas 2D `fillRect`
+- [x] You can draw rectangles with `draw_rect` or raw `sgl` calls
+- [x] You can draw lines
+- [x] You understand `sgl.ortho()` sets up 2D coordinates
+- [x] You understand the submit-then-flush pattern
+- [x] You can use `sapp.frame_count()` to animate position
+- [x] You relate this to Canvas 2D `fillRect`
 
 ---
 

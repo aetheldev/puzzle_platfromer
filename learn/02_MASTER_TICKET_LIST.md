@@ -51,8 +51,8 @@ How to use this file:
 - [x] Ticket g08 - GPU Basics For Web Devs
 - [x] Ticket 000 - Make Sure Repo Builds
 - [x] Ticket 001 - Learn Folder Map
-- [ ] Ticket 010 - T01 Hello Window
-- [ ] Ticket 011 - T02 Shapes And Colors
+- [x] Ticket 010 - T01 Hello Window
+- [x] Ticket 011 - T02 Shapes And Colors
 - [ ] Ticket 012 - T03 Movement
 - [ ] Ticket 013 - T04 Gravity And Jump
 - [ ] Ticket 014 - T05 Coyote And Jump Buffer
