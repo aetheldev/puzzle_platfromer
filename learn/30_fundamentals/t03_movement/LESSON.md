@@ -149,11 +149,11 @@ the same speed as moving horizontally.
 
 ## Exit Criteria
 
-- [ ] Player moves with keyboard input
-- [ ] Speed is consistent regardless of frame rate (dt works)
-- [ ] You understand the held-key boolean pattern
-- [ ] You can clamp position to screen bounds
-- [ ] You relate this to g06 and g07
+- [x] Player moves with keyboard input
+- [x] Speed is consistent regardless of frame rate (dt works)
+- [x] You understand the held-key boolean pattern
+- [x] You can clamp position to screen bounds
+- [x] You relate this to g06 and g07
 
 ---
 

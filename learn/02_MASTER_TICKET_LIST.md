@@ -53,7 +53,7 @@ How to use this file:
 - [x] Ticket 001 - Learn Folder Map
 - [x] Ticket 010 - T01 Hello Window
 - [x] Ticket 011 - T02 Shapes And Colors
-- [ ] Ticket 012 - T03 Movement
+- [x] Ticket 012 - T03 Movement
 - [ ] Ticket 013 - T04 Gravity And Jump
 - [ ] Ticket 014 - T05 Coyote And Jump Buffer
 - [ ] Ticket 015 - T06 Wall Jump
