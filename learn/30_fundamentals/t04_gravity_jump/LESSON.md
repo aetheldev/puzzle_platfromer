@@ -169,12 +169,12 @@ This makes taps give short jumps and holds give tall jumps.
 
 ## Exit Criteria
 
-- [ ] Gravity pulls player down naturally
-- [ ] Jump creates a natural arc
-- [ ] Player lands on floor correctly
-- [ ] You can explain velocity vs position
-- [ ] You can tune gravity and jump feel
-- [ ] You understand single-frame jump input
+- [x] Gravity pulls player down naturally
+- [x] Jump creates a natural arc
+- [x] Player lands on floor correctly
+- [x] You can explain velocity vs position
+- [x] You can tune gravity and jump feel
+- [x] You understand single-frame jump input
 
 ---
 
