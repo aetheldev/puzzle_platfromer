@@ -166,20 +166,22 @@ hotspot_under_mouse :: proc() -> (Hotspot_Id, bool) {
 
 draw_rect :: proc(r: Rect, cr, cg, cb: u8) {
 	sgl.begin_quads()
-	sgl.v2f_c4b(r.x,       r.y,       cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x + r.w, r.y,       cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x + r.w, r.y + r.h, cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x,       r.y + r.h, cr, cg, cb, 255)
+	sgl.c3f(f32(cr)/255, f32(cg)/255, f32(cb)/255)
+	sgl.v2f(r.x,       r.y)
+	sgl.v2f(r.x + r.w, r.y)
+	sgl.v2f(r.x + r.w, r.y + r.h)
+	sgl.v2f(r.x,       r.y + r.h)
 	sgl.end()
 }
 
 draw_outline :: proc(r: Rect, cr, cg, cb: u8) {
 	sgl.begin_line_strip()
-	sgl.v2f_c4b(r.x,       r.y,       cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x + r.w, r.y,       cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x + r.w, r.y + r.h, cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x,       r.y + r.h, cr, cg, cb, 255)
-	sgl.v2f_c4b(r.x,       r.y,       cr, cg, cb, 255)
+	sgl.c3f(f32(cr)/255, f32(cg)/255, f32(cb)/255)
+	sgl.v2f(r.x,       r.y)
+	sgl.v2f(r.x + r.w, r.y)
+	sgl.v2f(r.x + r.w, r.y + r.h)
+	sgl.v2f(r.x,       r.y + r.h)
+	sgl.v2f(r.x,       r.y)
 	sgl.end()
 }
 

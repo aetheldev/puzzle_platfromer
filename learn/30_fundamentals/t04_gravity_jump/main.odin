@@ -63,19 +63,21 @@ init :: proc "c" () {
 
 draw_rect :: proc(x, y, w, h: f32, r, g, b: u8) {
 	sgl.begin_quads()
-	sgl.v2f_c4b(x, y, r, g, b, 255)
-	sgl.v2f_c4b(x + w, y, r, g, b, 255)
-	sgl.v2f_c4b(x + w, y + h, r, g, b, 255)
-	sgl.v2f_c4b(x, y + h, r, g, b, 255)
+	sgl.c3f(f32(r) / 255, f32(g) / 255, f32(b) / 255)
+	sgl.v2f(x, y)
+	sgl.v2f(x + w, y)
+	sgl.v2f(x + w, y + h)
+	sgl.v2f(x, y + h)
 	sgl.end()
 }
 floor_maker :: proc(f: Floor) {
 	r, g, b: u8 = 80, 140, 80
 	sgl.begin_quads()
-	sgl.v2f_c4b(f.x, f.y, r, g, b, 255)
-	sgl.v2f_c4b(f.x + f.w, f.y, r, g, b, 255)
-	sgl.v2f_c4b(f.x + f.w, f.y + f.h, r, g, b, 255)
-	sgl.v2f_c4b(f.x, f.y + f.h, r, g, b, 255)
+	sgl.c3f(f32(r) / 255, f32(g) / 255, f32(b) / 255)
+	sgl.v2f(f.x, f.y)
+	sgl.v2f(f.x + f.w, f.y)
+	sgl.v2f(f.x + f.w, f.y + f.h)
+	sgl.v2f(f.x, f.y + f.h)
 	sgl.end()
 }
 

@@ -48,10 +48,11 @@ init :: proc "c" () {
 
 draw_rect :: proc(x, y, w, h: f32, r, g, b: u8) {
 	sgl.begin_quads()
-	sgl.v2f_c4b(x, y, r, g, b, 255)
-	sgl.v2f_c4b(x + w, y, r, g, b, 255)
-	sgl.v2f_c4b(x + w, y + h, r, g, b, 255)
-	sgl.v2f_c4b(x, y + h, r, g, b, 255)
+	sgl.c3f(f32(r) / 255, f32(g) / 255, f32(b) / 255)
+	sgl.v2f(x, y)
+	sgl.v2f(x + w, y)
+	sgl.v2f(x + w, y + h)
+	sgl.v2f(x, y + h)
 	sgl.end()
 }
 
@@ -103,8 +104,9 @@ frame :: proc "c" () {
 
 	// ground line
 	sgl.begin_lines()
-	sgl.v2f_c4b(0, H - 40, 100, 200, 100, 255)
-	sgl.v2f_c4b(W, H - 40, 100, 200, 100, 255)
+	sgl.c3f(100.0 / 255, 200.0 / 255, 100.0 / 255)
+	sgl.v2f(0, H - 40)
+	sgl.v2f(W, H - 40)
 	sgl.end()
 
 	// player rect

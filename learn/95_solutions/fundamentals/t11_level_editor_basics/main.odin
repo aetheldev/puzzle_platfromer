@@ -62,10 +62,11 @@ rt_ctx: runtime.Context
 
 draw_rect :: proc(x, y, w, h: f32, r, g, b: u8) {
 	sgl.begin_quads()
-	sgl.v2f_c4b(x,   y,   r, g, b, 255)
-	sgl.v2f_c4b(x+w, y,   r, g, b, 255)
-	sgl.v2f_c4b(x+w, y+h, r, g, b, 255)
-	sgl.v2f_c4b(x,   y+h, r, g, b, 255)
+	sgl.c3f(f32(r)/255, f32(g)/255, f32(b)/255)
+	sgl.v2f(x,   y)
+	sgl.v2f(x+w, y)
+	sgl.v2f(x+w, y+h)
+	sgl.v2f(x,   y+h)
 	sgl.end()
 }
 
@@ -188,15 +189,17 @@ frame :: proc "c" () {
 	for x in 0..=COLS {
 		px := f32(x * TILE)
 		sgl.begin_lines()
-		sgl.v2f_c4b(px, 0, 45, 50, 60, 255)
-		sgl.v2f_c4b(px, H, 45, 50, 60, 255)
+		sgl.c3f(f32(45)/255, f32(50)/255, f32(60)/255)
+		sgl.v2f(px, 0)
+		sgl.v2f(px, H)
 		sgl.end()
 	}
 	for y in 0..=ROWS {
 		py := f32(y * TILE)
 		sgl.begin_lines()
-		sgl.v2f_c4b(0, py, 45, 50, 60, 255)
-		sgl.v2f_c4b(W, py, 45, 50, 60, 255)
+		sgl.c3f(f32(45)/255, f32(50)/255, f32(60)/255)
+		sgl.v2f(0, py)
+		sgl.v2f(W, py)
 		sgl.end()
 	}
 

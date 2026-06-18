@@ -157,10 +157,11 @@ draw_cell :: proc(c: Cell, r, g, b: u8, inset: f32 = 2) {
 	y := f32(c.y * TILE) + inset
 	s := f32(TILE) - inset * 2
 	sgl.begin_quads()
-	sgl.v2f_c4b(x,     y,     r, g, b, 255)
-	sgl.v2f_c4b(x + s, y,     r, g, b, 255)
-	sgl.v2f_c4b(x + s, y + s, r, g, b, 255)
-	sgl.v2f_c4b(x,     y + s, r, g, b, 255)
+	sgl.c3f(f32(r)/255, f32(g)/255, f32(b)/255)
+	sgl.v2f(x,     y)
+	sgl.v2f(x + s, y)
+	sgl.v2f(x + s, y + s)
+	sgl.v2f(x,     y + s)
 	sgl.end()
 }
 
@@ -208,10 +209,11 @@ frame :: proc "c" () {
 	for i in 0 ..< min(score, 30) {
 		x := f32(8 + i * 12)
 		sgl.begin_quads()
-		sgl.v2f_c4b(x,   4, 230, 200, 90, 255)
-		sgl.v2f_c4b(x+8, 4, 230, 200, 90, 255)
-		sgl.v2f_c4b(x+8, 10, 230, 200, 90, 255)
-		sgl.v2f_c4b(x,   10, 230, 200, 90, 255)
+		sgl.c3f(f32(230)/255, f32(200)/255, f32(90)/255)
+		sgl.v2f(x,   4)
+		sgl.v2f(x+8, 4)
+		sgl.v2f(x+8, 10)
+		sgl.v2f(x,   10)
 		sgl.end()
 	}
 
