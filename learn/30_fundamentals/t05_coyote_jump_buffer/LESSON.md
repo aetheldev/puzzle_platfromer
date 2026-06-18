@@ -134,11 +134,11 @@ cyan for jump buffer. Watch them shrink.
 
 ## Exit Criteria
 
-- [ ] Coyote time lets you jump after leaving a ledge
-- [ ] Jump buffer catches early presses before landing
-- [ ] Variable jump height works (tap vs hold)
-- [ ] You can explain why these timers improve game feel
-- [ ] You can tune the values to your preference
+- [x] Coyote time lets you jump after leaving a ledge
+- [x] Jump buffer catches early presses before landing
+- [x] Variable jump height works (tap vs hold)
+- [x] You can explain why these timers improve game feel
+- [x] You can tune the values to your preference
 
 ---
 
