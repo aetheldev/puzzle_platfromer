@@ -117,8 +117,10 @@ The big-picture [DO] order it follows:
 30_fundamentals/          [DO]  t01..t11   window, input, gravity, tilemap, camera, shaders
 30_fundamentals/t12       [DO]  integration room: wire t01..t11 into one playable game
 30_fundamentals/t13       [DO]  point-and-click: hotspots, inventory, escape-room tech
+35_detective_coop/        [DO]  d01..d06   two-detective co-op investigation game (milestone)
 40_vfx/                   [DO]  v01..v04   glow, elements, fire, lasers
 45_shaders_postfx/        [DO]  s00..s06   render-to-texture post-FX: darkness, fog, lights, CRT, grading, bloom
+47_graphics_programming/  [READ+DO] gp01..gp17  graphics math, shader theory, post-FX deep dive, asset production
 55_pixel_art/             [SIDE] Aseprite zero-to-hero: a01..a11 — icons, character,
                                  animation, tiles, scene, export pipeline, Lua tooling
 60_projects/              [DO]  juice_playground, sokoban, card game  first full games

@@ -39,9 +39,18 @@ learn/
   20_game_thinking_for_web_devs/  [DO]   g01..g08  game mindset, no code
   30_fundamentals/                [DO]   t01..t11  window, input, physics, tilemap, camera, shaders
                                          t12       integration room: combine it all
+                                         t13       point-and-click escape room (genre core tech)
+  35_detective_coop/              [DO]   d01..d06  two-detective co-op investigation: multi-inventory,
+                                         inspect/combine, branching dialog, clue notebook,
+                                         deduction, split-role co-op case (builds on t13)
   40_vfx/                         [DO]   v01..v04  glow, elemental orbs, fire, laser
   45_shaders_postfx/              [DO]   s00..s06  render-to-texture post-FX:
                                          darkness, fog, lights, CRT, grading, bloom
+  47_graphics_programming/        [READ+DO] gp01..gp17  graphics math (matrices, transform,
+                                         camera, projection), shader theory (vertex,
+                                         fragment, fresnel, PBR, normal mapping), post-FX
+                                         deep dive (bloom, tone mapping, SSAO, grading),
+                                         asset production (Blender, UV, texture, lighting)
   50_advanced/                    [READ] production rendering/FX reading path (AFTER projects)
   55_pixel_art/                   [SIDE] Aseprite zero-to-hero (a01..a11): pixels, light,
                                          color, icons, character, animation, tiles, scene,
@@ -65,7 +74,7 @@ learn/
 This is the ONLY sequence you follow. Everything else is support:
 
 ```
-10 -> 20 -> 30 -> 40 -> 60 -> 70 -> 75 -> 90 -> sauce/
+10 -> 20 -> 30 -> 35 -> 40 -> 60 -> 70 -> 75 -> 90 -> sauce/
 ```
 
 `50_advanced` and `85_networking` sit at those numbers only so they sort
@@ -77,8 +86,8 @@ and `95_solutions` are lookup folders, open whenever a lesson points you in.
 
 - The **[DO]** lesson folders (`10_odin_for_js_devs/`,
   `20_game_thinking_for_web_devs/`, `30_fundamentals/`, `40_vfx/`,
-  `45_shaders_postfx/`, `60_projects/`, `70_co_op/`) contain
-  **instructions only**.
+  `35_detective_coop/`, `45_shaders_postfx/`, `60_projects/`, `70_co_op/`)
+  contain **instructions only**.
 - You write your own `main.odin` in the lesson folder, then `zsh build.sh`.
 - Runnable answers live under `learn/95_solutions/...` — open only when a lesson
   tells you which exact lines to read.
@@ -89,8 +98,9 @@ The [DO] path only (read the table above for what the other numbers mean):
 
 ```
 10_odin_for_js_devs  ->  20_game_thinking_for_web_devs  ->  30_fundamentals
-   ->  40_vfx  ->  45_shaders_postfx  ->  60_projects + 70_co_op
-   ->  75_sauce_bridge  ->  90_production_with_sauce  ->  real sauce/ game
+   ->  35_detective_coop  ->  40_vfx  ->  45_shaders_postfx
+   ->  60_projects + 70_co_op  ->  75_sauce_bridge
+   ->  90_production_with_sauce  ->  real sauce/ game
 ```
 
 Side trips off that line, when a lesson sends you:

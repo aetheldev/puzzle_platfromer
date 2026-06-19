@@ -64,6 +64,12 @@ How to use this file:
 - [ ] Ticket 020 - T11 Level Editor Basics
 - [ ] Ticket 020B - T12 Integration Room (combine t01-t11 into one playable room)
 - [ ] Ticket 020C - T13 Point And Click (escape-room tech: hotspots, inventory, ordered code)
+- [ ] Ticket 020D - D01 Multi-Slot Inventory
+- [ ] Ticket 020E - D02 Inspect & Combine
+- [ ] Ticket 020F - D03 Branching Dialog
+- [ ] Ticket 020G - D04 Clue Notebook
+- [ ] Ticket 020H - D05 Clues & Deduction
+- [ ] Ticket 020I - D06 Two-Detective Co-op Case (capstone)
 - [ ] Ticket 021 - V01 Glow Highlight
 - [ ] Ticket 022 - V02 Elemental Orbs
 - [ ] Ticket 023 - V03 Burning Effect
@@ -447,6 +453,76 @@ If you do this, also try:
 
 ---
 
+## Phase 1.4 - Detective Co-op (your milestone game)
+
+Build your two-detective co-op investigation game, one system at a time, on
+top of t13. Start with `learn/35_detective_coop/README.md`. Each lesson ships
+a runnable Odin + sokol_gl program you write yourself. Single screen, local,
+split-role co-op (mouse = Field detective, keyboard = Desk detective). No
+networking yet — that comes LAST.
+
+### Ticket 020D - D01 Multi-Slot Inventory
+
+Read + build:
+- `learn/35_detective_coop/d01_multi_inventory/LESSON.md`
+
+Do:
+- grow t13's one-slot hand into a list inventory: pick up many items, select
+  one, use it on a hotspot (and consume it)
+
+### Ticket 020E - D02 Inspect & Combine
+
+Read + build:
+- `learn/35_detective_coop/d02_inspect_combine/LESSON.md`
+
+Do:
+- a modal inspect view that can reveal a hidden detail; combine two items into
+  a new one via a data-driven recipe table
+
+### Ticket 020F - D03 Branching Dialog
+
+Read + build:
+- `learn/35_detective_coop/d03_dialog_system/LESSON.md`
+
+Do:
+- a witness conversation as a node table; choices route to nodes, grant clues,
+  and can be gated behind a clue you already have
+
+### Ticket 020G - D04 Clue Notebook
+
+Read + build:
+- `learn/35_detective_coop/d04_clue_notebook/LESSON.md`
+
+Do:
+- a fixed clue catalog + discovered/pinned flags; one `discover` entry point
+  feeds the notebook from inspect (d02) and dialog (d03)
+
+### Ticket 020H - D05 Clues & Deduction
+
+Read + build:
+- `learn/35_detective_coop/d05_clues_deduction/LESSON.md`
+
+Do:
+- combine clues into conclusions with `bit_set` set-algebra rules (o19);
+  wrong combos rejected, correct ones lock in a conclusion
+
+### Ticket 020I - D06 Two-Detective Co-op Case (capstone)
+
+Read + build:
+- `learn/35_detective_coop/d06_two_detective_coop/LESSON.md`
+
+Do:
+- wire d01-d05 into one split-role case: Field detective (mouse) discovers a
+  clue only they can find; Desk detective (keyboard) needs it to deduce the
+  killer. Express every action as an `Intent` so it is networking-ready.
+
+If you do this, also try:
+- add a `45_shaders_postfx` mood to the crime scene (darkness/fog/grading)
+- read `learn/85_networking/06_two_windows_local_to_network.md` to turn the
+  `Intent`s into online two-window co-op (LAST, after local is fun)
+
+---
+
 ## Phase 1.5 - VFX Practice
 
 ### Ticket 021 - V01 Glow Highlight
@@ -571,6 +647,63 @@ Do:
 
 If you do this, also try:
 - run your sokoban or juice_playground scene through s01 darkness + s02 fog
+
+## Phase 1.6 - Graphics Programming Deep Dive (optional, [READ+DO])
+
+Open `learn/47_graphics_programming/README.md` first. This explains the math
+and GPU theory under everything you have built: matrices, shaders, post-FX,
+and asset production. Tags: [RUN] = working Odin demo, [MATH] = theory + a
+small demo, [GUIDE] = Blender. Do it whenever you want to truly understand
+"why", not just "how". Not required to keep progressing the [DO] path.
+
+### Ticket 024h - Graphics Math (matrices, transform, camera, projection)
+
+Read + build:
+- `learn/47_graphics_programming/gp01_matrices/LESSON.md`
+- `learn/47_graphics_programming/gp02_transform/LESSON.md`
+- `learn/47_graphics_programming/gp03_camera/LESSON.md`
+- `learn/47_graphics_programming/gp04_projection/LESSON.md`
+
+Do:
+- build a model matrix and a view matrix by hand; explain MVP and the
+  perspective divide-by-w
+
+### Ticket 024i - Shader Theory (vertex, fragment, fresnel, PBR, normal map)
+
+Read + build:
+- `learn/47_graphics_programming/gp05_vertex_shader/LESSON.md`
+- `learn/47_graphics_programming/gp06_fragment_shader/LESSON.md`
+- `learn/47_graphics_programming/gp07_fresnel/LESSON.md`
+- `learn/47_graphics_programming/gp08_pbr/LESSON.md`
+- `learn/47_graphics_programming/gp09_normal_mapping/LESSON.md`
+
+Do:
+- explain per-vertex vs per-pixel work; write the Schlick Fresnel; say where
+  Fresnel lives inside the PBR BRDF; explain the normal-map pack/unpack
+
+### Ticket 024j - Post-FX Deep Dive (bloom, tone mapping, SSAO, grading)
+
+Read + build:
+- `learn/47_graphics_programming/gp10_bloom_depth/LESSON.md`
+- `learn/47_graphics_programming/gp11_tone_mapping/LESSON.md`
+- `learn/47_graphics_programming/gp12_ssao/LESSON.md`
+- `learn/47_graphics_programming/gp13_color_grading/LESSON.md`
+
+Do:
+- name the bloom stages; write Reinhard; explain SSAO inputs; name the grading
+  chain order and what a LUT bakes
+
+### Ticket 024k - Asset Production (Blender, UV, texture, lighting)
+
+Read + do in Blender:
+- `learn/47_graphics_programming/gp14_blender/LESSON.md`
+- `learn/47_graphics_programming/gp15_uv/LESSON.md`
+- `learn/47_graphics_programming/gp16_texture/LESSON.md`
+- `learn/47_graphics_programming/gp17_lighting_setup/LESSON.md`
+
+Do:
+- model a prop, UV-unwrap it, author albedo/roughness/normal maps, light it
+  with a three-point rig, and render or bake it to a usable asset
 
 ## Phase 1.75 - Advanced Preview
 
@@ -1190,6 +1323,8 @@ Practice:
 19. `learn/30_fundamentals/t11_level_editor_basics/LESSON.md`
 20. `learn/30_fundamentals/t12_integration_room/LESSON.md`
 20b. `learn/30_fundamentals/t13_point_and_click/LESSON.md`
+20c. `learn/35_detective_coop/d01_multi_inventory/LESSON.md`
+20d. ... through `d06_two_detective_coop/LESSON.md` (the milestone game)
 21. `learn/40_vfx/v01_glow_highlight/LESSON.md`
 22. `learn/40_vfx/v02_elemental_orbs/LESSON.md`
 23. `learn/40_vfx/v03_burning_effect/LESSON.md`
