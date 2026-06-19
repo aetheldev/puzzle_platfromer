@@ -30,6 +30,7 @@ package d06_two_detective_coop
 import sapp  "../../../../sauce/sokol/app"
 import sg    "../../../../sauce/sokol/gfx"
 import sgl   "../../../../sauce/sokol/gl"
+import sdtx  "../../../../sauce/sokol/debugtext" // on-screen text labels
 import sglue "../../../../sauce/sokol/glue"
 import slog  "../../../../sauce/sokol/log"
 import "base:runtime"
@@ -76,11 +77,22 @@ ITEM_COLORS := [Item][3]u8 {
 	.tape         = {220, 220, 120},
 	.bloody_knife = {200, 70, 70},
 }
+ITEM_NAMES := [Item]string {
+	.none         = "",
+	.torn_photo   = "torn photo",
+	.tape         = "tape",
+	.bloody_knife = "bloody knife",
+}
 
 Clue :: enum {
 	knife_weapon,
 	photo_address,
 	shaky_alibi,
+}
+CLUE_NAMES := [Clue]string {
+	.knife_weapon  = "knife = weapon",
+	.photo_address = "photo address",
+	.shaky_alibi   = "shaky alibi",
 }
 clues_found: bit_set[Clue]
 
@@ -96,6 +108,10 @@ discover :: proc(c: Clue) {
 Conclusion :: enum {
 	none,
 	killer_identified,
+}
+CONCL_NAMES := [Conclusion]string {
+	.none              = "",
+	.killer_identified = "KILLER IDENTIFIED",
 }
 Deduction :: struct {
 	needs:  bit_set[Clue],
@@ -282,10 +298,21 @@ event :: proc "c" (e: ^sapp.Event) {
 	}
 }
 
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	sdtx.pos(px / 8, py / 8)
+	sdtx.printf("%s", str)
+}
+
 init :: proc "c" () {
 	context = rt_ctx
 	sg.setup({environment = sglue.environment(), logger = {func = slog.func}})
 	sgl.setup({logger = {func = slog.func}})
+	d: sdtx.Desc
+	d.fonts[0] = sdtx.font_kc853()
+	d.logger = {func = slog.func}
+	sdtx.setup(d)
 	pass_action = {
 		colors = {0 = {load_action = .CLEAR, clear_value = {r = 0.05, g = 0.06, b = 0.09, a = 1}}},
 	}
@@ -373,14 +400,69 @@ frame :: proc "c" () {
 		draw_rect({HALF / 2 - 120, 30, 240, 26}, 220, 180, 70)
 	}
 
+	// ---- text overlay ----
+	sdtx.canvas(W, H)
+	// panel headers
+	label(12, 10, 230, 220, 180, "FIELD - Detective A (mouse)")
+	label(HALF + 12, 10, 200, 220, 240, "DESK - Detective B (keys)")
+
+	// FIELD side
+	if !inspect_mode {
+		for id in Hotspot_Id {
+			if !taken[HOTSPOT_ITEM[id]] {
+				r := HOTSPOTS[id]
+				label(r.x, r.y - 14, 240, 230, 180, ITEM_NAMES[HOTSPOT_ITEM[id]])
+			}
+		}
+		for it, i in inventory {
+			r := slot_rect(i)
+			label(r.x, r.y - 14, 200, 210, 230, ITEM_NAMES[it])
+		}
+		label(12, H - 90, 150, 150, 160, "click evidence to collect, right-click a slot to inspect")
+	} else {
+		label(HALF / 2 - 50, 100, 240, 230, 180, ITEM_NAMES[inspecting])
+		if inspecting == .torn_photo {
+			label(INSPECT_DETAIL.x, INSPECT_DETAIL.y - 14, 240, 220, 90, "[back]")
+			if photo_detail_found {
+				label(HALF / 2 - 50, 310, 120, 240, 140, "found: address!")
+			}
+		}
+		label(HALF / 2 - 80, 470, 150, 150, 160, "click detail / click away to exit")
+	}
+
+	// DESK side
+	for c, i in chip_order {
+		r := Rect{HALF + 40, 90 + f32(i) * 56, HALF - 100, 44}
+		if c in clues_found {
+			txt := CLUE_NAMES[c]
+			if c in selected {txt = fmt.tprintf("%s [x]", CLUE_NAMES[c])}
+			label(r.x + 8, r.y + 14, 210, 230, 250, txt)
+		} else {
+			label(r.x + 8, r.y + 14, 110, 110, 120, "??? (ask A)")
+		}
+	}
+	label(HALF + 50, H - 90 + 14, 200, 240, 200, "DEDUCE (Space)")
+	label(HALF + 40, H - 40, 150, 150, 160, "1-3 toggle clue, Space = deduce")
+
+	if nudge_timer > 0 {
+		label(HALF / 2 - 90, 36, 255, 230, 70, "TELL YOUR PARTNER!")
+	}
+
+	if state == .solved {
+		label(HALF + 60, 320, 120, 240, 150, "CASE SOLVED!")
+		label(HALF + 60, 340, 200, 240, 180, CONCL_NAMES[.killer_identified])
+	}
+
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
 	sgl.draw()
+	sdtx.draw()
 	sg.end_pass()
 	sg.commit()
 }
 
 cleanup :: proc "c" () {
 	context = rt_ctx
+	sdtx.shutdown()
 	sgl.shutdown()
 	sg.shutdown()
 }

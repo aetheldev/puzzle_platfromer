@@ -24,6 +24,7 @@ package d04_clue_notebook
 import sapp  "../../../../sauce/sokol/app"
 import sg    "../../../../sauce/sokol/gfx"
 import sgl   "../../../../sauce/sokol/gl"
+import sdtx  "../../../../sauce/sokol/debugtext" // on-screen text labels
 import sglue "../../../../sauce/sokol/glue"
 import slog  "../../../../sauce/sokol/log"
 import "base:runtime"
@@ -135,10 +136,37 @@ event :: proc "c" (e: ^sapp.Event) {
 	}
 }
 
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	sdtx.pos(px / 8, py / 8)
+	sdtx.printf("%s", str)
+}
+
+// draw a long string wrapped to `cols` characters per line, starting at (px,py)
+label_wrap :: proc(px, py: f32, r, g, b: u8, str: string, cols: int) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	line_y := py
+	start := 0
+	for start < len(str) {
+		end := start + cols
+		if end > len(str) { end = len(str) }
+		sdtx.pos(px / 8, line_y / 8)
+		sdtx.printf("%s", str[start:end])
+		line_y += 12
+		start = end
+	}
+}
+
 init :: proc "c" () {
 	context = rt_ctx
 	sg.setup({environment = sglue.environment(), logger = {func = slog.func}})
 	sgl.setup({logger = {func = slog.func}})
+	d: sdtx.Desc
+	d.fonts[0] = sdtx.font_kc853()
+	d.logger = {func = slog.func}
+	sdtx.setup(d)
 	pass_action = {
 		colors = {0 = {load_action = .CLEAR, clear_value = {r = 0.06, g = 0.07, b = 0.10, a = 1}}},
 	}
@@ -203,14 +231,42 @@ frame :: proc "c" () {
 		}
 	}
 
+	// --- on-screen text overlay ---
+	sdtx.canvas(W, H)
+	label(16, 16, 230, 230, 240, "D04 - Clue Notebook")
+	label(16, 32, 150, 160, 190, "1-4 = find a clue   TAB = open/close notebook   click row = open, click box = pin   R = reset")
+	label(W - 58, 18, 20, 30, 20, fmt.tprintf("clues: %d", found))
+
+	if notebook_open {
+		label(60, 78, 200, 210, 230, "NOTEBOOK")
+		ti := 0
+		for c in Clue {
+			if c == .none || !discovered[c] {continue}
+			rr := row_rect(ti)
+			label(rr.x + 10, rr.y + 14, 230, 230, 240, CLUES[c].title)
+			pr := pin_rect(ti)
+			label(pr.x - 30, pr.y + 8, 200, 210, 230, pinned[c] ? "PINNED" : "PIN")
+			ti += 1
+		}
+
+		if opened_clue != .none {
+			label(476, 126, 20, 20, 30, CLUES[opened_clue].title)
+			label_wrap(476, 160, 220, 225, 235, CLUES[opened_clue].body, 52)
+		}
+	} else {
+		label(W / 2 - 110, H / 2, 200, 200, 160, "Press TAB to open the notebook")
+	}
+
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
 	sgl.draw()
+	sdtx.draw()
 	sg.end_pass()
 	sg.commit()
 }
 
 cleanup :: proc "c" () {
 	context = rt_ctx
+	sdtx.shutdown()
 	sgl.shutdown()
 	sg.shutdown()
 }

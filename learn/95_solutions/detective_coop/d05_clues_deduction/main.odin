@@ -20,6 +20,7 @@ package d05_clues_deduction
 import sapp  "../../../../sauce/sokol/app"
 import sg    "../../../../sauce/sokol/gfx"
 import sgl   "../../../../sauce/sokol/gl"
+import sdtx  "../../../../sauce/sokol/debugtext" // on-screen text labels
 import sglue "../../../../sauce/sokol/glue"
 import slog  "../../../../sauce/sokol/log"
 import "base:runtime"
@@ -152,10 +153,21 @@ event :: proc "c" (e: ^sapp.Event) {
 	}
 }
 
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	sdtx.pos(px / 8, py / 8)
+	sdtx.printf("%s", str)
+}
+
 init :: proc "c" () {
 	context = rt_ctx
 	sg.setup({environment = sglue.environment(), logger = {func = slog.func}})
 	sgl.setup({logger = {func = slog.func}})
+	d: sdtx.Desc
+	d.fonts[0] = sdtx.font_kc853()
+	d.logger = {func = slog.func}
+	sdtx.setup(d)
 	pass_action = {
 		colors = {0 = {load_action = .CLEAR, clear_value = {r = 0.07, g = 0.08, b = 0.11, a = 1}}},
 	}
@@ -211,14 +223,41 @@ frame :: proc "c" () {
 		idx += 1
 	}
 
+	// text overlay
+	sdtx.canvas(W, H)
+	label(20, 24, 220, 220, 230, "D05 - Clues & Deduction")
+	label(20, 60, 150, 160, 180, "Click clue chips to toggle, then click Deduce. Find all conclusions. R = reset")
+
+	ti := 0
+	for c in Clue {
+		if c not_in available {continue}
+		cr := chip_rect(ti)
+		label(cr.x + 8, cr.y + 14, 220, 230, 240, CLUE_NAMES[c])
+		ti += 1
+	}
+
+	label(DEDUCE_BTN.x + 30, DEDUCE_BTN.y + 16, 220, 255, 220, "DEDUCE")
+
+	cidx := 0
+	for cc in Conclusion {
+		if cc == .none {continue}
+		on := reached[cc]
+		label(W - 220, 124 + f32(cidx) * 40, on ? 120 : 90, on ? 220 : 100, on ? 140 : 110, CONCL_NAMES[cc])
+		cidx += 1
+	}
+
+	label(20, H - 30, 220, 150, 150, fmt.tprintf("wrong: %d", wrong_guesses))
+
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
 	sgl.draw()
+	sdtx.draw()
 	sg.end_pass()
 	sg.commit()
 }
 
 cleanup :: proc "c" () {
 	context = rt_ctx
+	sdtx.shutdown()
 	sgl.shutdown()
 	sg.shutdown()
 }

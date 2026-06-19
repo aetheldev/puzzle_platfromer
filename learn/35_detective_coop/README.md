@@ -44,6 +44,42 @@ exercise. Online two-window co-op comes LAST, only after this works:
 networking-ready because every action is a small intent
 (`{who, action, target}`), trivial to serialize later.
 
+## On-screen text (sokol_debugtext)
+
+Every solution draws **real text labels** on screen using `sokol_debugtext`
+(`sdtx`), so you can read item names, dialog lines, clue titles, and panel
+headers instead of guessing at colored rectangles. The pattern is tiny and the
+same in every file:
+
+```odin
+import sdtx "../../../../sauce/sokol/debugtext"
+
+// init: after sgl.setup(...)
+d: sdtx.Desc
+d.fonts[0] = sdtx.font_kc853()
+d.logger = {func = slog.func}
+sdtx.setup(d)
+
+// a helper: draw text at a PIXEL position (sdtx cells are 8x8 px)
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+    sdtx.font(0); sdtx.color3b(r, g, b)
+    sdtx.pos(px / 8, py / 8); sdtx.printf("%s", str)
+}
+
+// frame: after your sgl drawing, before begin_pass
+sdtx.canvas(W, H)
+label(12, 10, 230, 230, 240, "title / labels here")
+
+// inside the pass, draw shapes THEN text:
+sgl.draw()
+sdtx.draw()
+
+// cleanup: sdtx.shutdown() before sgl.shutdown()
+```
+
+This repo has no Dear ImGui binding, but `sdtx` ships with the vendored sokol
+and is enough for readable labels and debug HUDs — no extra C dependency.
+
 ## How to use this folder
 
 Same loop as all of `learn/`:

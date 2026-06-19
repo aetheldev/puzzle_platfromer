@@ -22,6 +22,7 @@ package d01_multi_inventory
 import sapp  "../../../../sauce/sokol/app"
 import sg    "../../../../sauce/sokol/gfx"
 import sgl   "../../../../sauce/sokol/gl"
+import sdtx  "../../../../sauce/sokol/debugtext" // on-screen text labels
 import sglue "../../../../sauce/sokol/glue"
 import slog  "../../../../sauce/sokol/log"
 import "base:runtime"
@@ -51,6 +52,20 @@ ITEM_COLORS := [Item][3]u8 {
 	.magnifier = {120, 200, 220},
 	.key       = {210, 190, 90},
 	.photo     = {200, 200, 210},
+}
+
+ITEM_NAMES := [Item]string {
+	.none      = "",
+	.magnifier = "magnifier",
+	.key       = "key",
+	.photo     = "photo",
+}
+
+HOTSPOT_LABELS := [Hotspot_Id]string {
+	.magnifier_on_desk = "magnifier",
+	.key_on_hook       = "key",
+	.photo_on_wall     = "photo",
+	.drawer            = "drawer",
 }
 
 // --- hotspots (clickable scene regions) ---
@@ -198,10 +213,23 @@ event :: proc "c" (e: ^sapp.Event) {
 	}
 }
 
+// --- text helper: draw a string at PIXEL position (x,y). sdtx is cell-based
+// (one char = 8x8 px), so we set canvas = window size and divide by 8. ---
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	sdtx.pos(px / 8, py / 8)
+	sdtx.printf("%s", str)
+}
+
 init :: proc "c" () {
 	context = rt_ctx
 	sg.setup({environment = sglue.environment(), logger = {func = slog.func}})
 	sgl.setup({logger = {func = slog.func}})
+	d: sdtx.Desc
+	d.fonts[0] = sdtx.font_kc853()
+	d.logger = {func = slog.func}
+	sdtx.setup(d)
 	pass_action = {
 		colors = {0 = {load_action = .CLEAR, clear_value = {r = 0.07, g = 0.07, b = 0.10, a = 1}}},
 	}
@@ -253,14 +281,44 @@ frame :: proc "c" () {
 		}
 	}
 
+	// ---- TEXT OVERLAY (sokol_debugtext) ----
+	sdtx.canvas(W, H)
+	// title + controls
+	label(12, 10, 230, 230, 240, "D01 - Multi-Slot Inventory")
+	label(12, 26, 150, 150, 170, "Click items to collect. Click a slot to select. R = reset.")
+
+	// label each scene item under its rect
+	if !taken[.magnifier] {label(HOTSPOTS[.magnifier_on_desk].x, HOTSPOTS[.magnifier_on_desk].y - 14, 200, 220, 240, "magnifier")}
+	if !taken[.key] {label(HOTSPOTS[.key_on_hook].x, HOTSPOTS[.key_on_hook].y - 14, 230, 210, 120, "key")}
+	if !taken[.photo] {label(HOTSPOTS[.photo_on_wall].x, HOTSPOTS[.photo_on_wall].y - 14, 220, 220, 230, "photo")}
+	label(HOTSPOTS[.drawer].x, HOTSPOTS[.drawer].y - 14, 200, 170, 120, drawer_open ? "drawer (open)" : "drawer (locked)")
+
+	// label each inventory slot with the item name
+	for it, i in inventory {
+		r := slot_rect(i)
+		label(r.x, r.y - 14, 220, 220, 200, ITEM_NAMES[it])
+	}
+
+	// what is selected, and a hover hint
+	if sel := selected_item(); sel != .none {
+		label(180, H - 30, 240, 220, 90, fmt.tprintf("selected: %s", ITEM_NAMES[sel]))
+	} else {
+		label(180, H - 30, 120, 120, 140, "selected: nothing")
+	}
+	if id, ok := hotspot_under_mouse(); ok {
+		label(mouse_x + 12, mouse_y - 4, 250, 240, 180, HOTSPOT_LABELS[id])
+	}
+
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
-	sgl.draw()
+	sgl.draw()   // shapes first
+	sdtx.draw()  // text on top, same pass
 	sg.end_pass()
 	sg.commit()
 }
 
 cleanup :: proc "c" () {
 	context = rt_ctx
+	sdtx.shutdown()
 	sgl.shutdown()
 	sg.shutdown()
 }

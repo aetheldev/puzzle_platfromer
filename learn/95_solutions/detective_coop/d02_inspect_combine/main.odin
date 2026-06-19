@@ -24,6 +24,7 @@ package d02_inspect_combine
 import sapp  "../../../../sauce/sokol/app"
 import sg    "../../../../sauce/sokol/gfx"
 import sgl   "../../../../sauce/sokol/gl"
+import sdtx  "../../../../sauce/sokol/debugtext" // on-screen text labels
 import sglue "../../../../sauce/sokol/glue"
 import slog  "../../../../sauce/sokol/log"
 import "base:runtime"
@@ -213,10 +214,23 @@ event :: proc "c" (e: ^sapp.Event) {
 	}
 }
 
+// draw a string at PIXEL position (x,y). sdtx is cell-based (one char = 8x8 px),
+// so we set canvas = window size and divide by 8.
+label :: proc(px, py: f32, r, g, b: u8, str: string) {
+	sdtx.font(0)
+	sdtx.color3b(r, g, b)
+	sdtx.pos(px / 8, py / 8)
+	sdtx.printf("%s", str)
+}
+
 init :: proc "c" () {
 	context = rt_ctx
 	sg.setup({environment = sglue.environment(), logger = {func = slog.func}})
 	sgl.setup({logger = {func = slog.func}})
+	d: sdtx.Desc
+	d.fonts[0] = sdtx.font_kc853()
+	d.logger = {func = slog.func}
+	sdtx.setup(d)
 	pass_action = {
 		colors = {0 = {load_action = .CLEAR, clear_value = {r = 0.07, g = 0.07, b = 0.10, a = 1}}},
 	}
@@ -302,14 +316,53 @@ frame :: proc "c" () {
 		}
 	}
 
+	// --- text overlay ---
+	sdtx.canvas(W, H)
+	label(12, 10, 235, 235, 245, "D02 - Inspect & Combine")
+	label(12, 26, 150, 160, 175, "Left=collect/select  Right=inspect  C=arm combine then click  R=reset")
+
+	if mode == .inspect {
+		label(W / 2 - 60, 100, 245, 240, 200, ITEM_NAMES[inspecting])
+		if inspecting == .repaired_photo {
+			label(INSPECT_DETAIL.x, INSPECT_DETAIL.y - 14, 240, 220, 90, "[back of photo]")
+			if found_address {
+				label(W / 2 - 60, H / 2 + 90, 120, 240, 140, "Clue: an address!")
+			}
+		}
+		label(W / 2 - 90, H - 40, 160, 170, 185, "click elsewhere / Esc to exit")
+	} else {
+		// label visible scene pickups
+		for id in Hotspot_Id {
+			if !taken[HOTSPOT_ITEM[id]] {
+				r := HOTSPOTS[id]
+				label(r.x, r.y - 14, 220, 215, 200, ITEM_NAMES[HOTSPOT_ITEM[id]])
+			}
+		}
+		// label inventory slots
+		for it, i in inventory {
+			r := slot_rect(i)
+			label(r.x, r.y - 14, 200, 205, 215, ITEM_NAMES[it])
+		}
+		// status line near bottom
+		sel := selected_item()
+		armed := "none"
+		if combine_arm >= 0 && combine_arm < len(inventory) {
+			armed = ITEM_NAMES[inventory[combine_arm]]
+		}
+		label(12, H - 30, 200, 210, 220,
+			fmt.tprintf("selected: %s   combine armed: %s", ITEM_NAMES[sel], armed))
+	}
+
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
 	sgl.draw()
+	sdtx.draw()
 	sg.end_pass()
 	sg.commit()
 }
 
 cleanup :: proc "c" () {
 	context = rt_ctx
+	sdtx.shutdown()
 	sgl.shutdown()
 	sg.shutdown()
 }
