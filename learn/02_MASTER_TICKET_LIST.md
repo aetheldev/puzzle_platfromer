@@ -55,8 +55,8 @@ How to use this file:
 - [x] Ticket 011 - T02 Shapes And Colors
 - [x] Ticket 012 - T03 Movement
 - [x] Ticket 013 - T04 Gravity And Jump
-- [ ] Ticket 014 - T05 Coyote And Jump Buffer
-- [ ] Ticket 015 - T06 Wall Jump
+- [x] Ticket 014 - T05 Coyote And Jump Buffer
+- [x] Ticket 015 - T06 Wall Jump
 - [ ] Ticket 016 - T07 Tilemap
 - [ ] Ticket 017 - T08 Camera
 - [ ] Ticket 018 - T09 Shader And Glow
