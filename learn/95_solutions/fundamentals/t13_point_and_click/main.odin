@@ -24,11 +24,11 @@
 
 package t13
 
-import sapp  "../../../../sauce/sokol/app"
-import sg    "../../../../sauce/sokol/gfx"
-import sgl   "../../../../sauce/sokol/gl"
+import sapp "../../../../sauce/sokol/app"
+import sg "../../../../sauce/sokol/gfx"
+import sgl "../../../../sauce/sokol/gl"
 import sglue "../../../../sauce/sokol/glue"
-import slog  "../../../../sauce/sokol/log"
+import slog "../../../../sauce/sokol/log"
 import "base:runtime"
 import "core:fmt"
 
@@ -54,9 +54,9 @@ Hotspot_Id :: enum {
 	door,
 }
 
-HOTSPOTS := [Hotspot_Id]Rect{
+HOTSPOTS := [Hotspot_Id]Rect {
 	.painting  = {120, 120, 140, 110},
-	.key       = {150, 250, 60, 26},   // hidden behind painting
+	.key       = {150, 250, 60, 26}, // hidden behind painting
 	.drawer    = {380, 330, 150, 90},
 	.btn_red   = {660, 200, 40, 40},
 	.btn_green = {710, 200, 40, 40},
@@ -66,9 +66,9 @@ HOTSPOTS := [Hotspot_Id]Rect{
 
 // --- Room state: flags decide what exists and what clicks do ---
 painting_moved: bool
-key_taken:      bool
-drawer_open:    bool
-door_open:      bool
+key_taken: bool
+drawer_open: bool
+door_open: bool
 
 // one-slot inventory: what is in your hand?
 Held_Item :: enum {
@@ -119,7 +119,9 @@ interact :: proc(id: Hotspot_Id) {
 	switch id {
 	case .painting:
 		painting_moved = !painting_moved
-		fmt.println(painting_moved ? "You slide the painting aside." : "You push the painting back.")
+		fmt.println(
+			painting_moved ? "You slide the painting aside." : "You push the painting back.",
+		)
 	case .key:
 		key_taken = true
 		held = .key
@@ -155,7 +157,7 @@ hotspot_active :: proc(id: Hotspot_Id) -> bool {
 // topmost active hotspot under the mouse (later entries drawn on top)
 hotspot_under_mouse :: proc() -> (Hotspot_Id, bool) {
 	// key sits over painting region, so check in reverse declaration order
-	ids := [?]Hotspot_Id{.door, .btn_blue, .btn_green, .btn_red, .drawer, .key, .painting}
+	ids := [?]Hotspot_Id{.btn_blue, .btn_green, .btn_red, .drawer, .key, .painting, .door}
 	for id in ids {
 		if hotspot_active(id) && point_in_rect(mouse_x, mouse_y, HOTSPOTS[id]) {
 			return id, true
@@ -166,22 +168,22 @@ hotspot_under_mouse :: proc() -> (Hotspot_Id, bool) {
 
 draw_rect :: proc(r: Rect, cr, cg, cb: u8) {
 	sgl.begin_quads()
-	sgl.c3f(f32(cr)/255, f32(cg)/255, f32(cb)/255)
-	sgl.v2f(r.x,       r.y)
+	sgl.c3f(f32(cr) / 255, f32(cg) / 255, f32(cb) / 255)
+	sgl.v2f(r.x, r.y)
 	sgl.v2f(r.x + r.w, r.y)
 	sgl.v2f(r.x + r.w, r.y + r.h)
-	sgl.v2f(r.x,       r.y + r.h)
+	sgl.v2f(r.x, r.y + r.h)
 	sgl.end()
 }
 
 draw_outline :: proc(r: Rect, cr, cg, cb: u8) {
 	sgl.begin_line_strip()
-	sgl.c3f(f32(cr)/255, f32(cg)/255, f32(cb)/255)
-	sgl.v2f(r.x,       r.y)
+	sgl.c3f(f32(cr) / 255, f32(cg) / 255, f32(cb) / 255)
+	sgl.v2f(r.x, r.y)
 	sgl.v2f(r.x + r.w, r.y)
 	sgl.v2f(r.x + r.w, r.y + r.h)
-	sgl.v2f(r.x,       r.y + r.h)
-	sgl.v2f(r.x,       r.y)
+	sgl.v2f(r.x, r.y + r.h)
+	sgl.v2f(r.x, r.y)
 	sgl.end()
 }
 
@@ -197,7 +199,8 @@ event :: proc "c" (e: ^sapp.Event) {
 		}
 	case .KEY_DOWN:
 		#partial switch e.key_code {
-		case .R: reset_room()
+		case .R:
+			reset_room()
 		}
 	}
 }
@@ -251,9 +254,9 @@ frame :: proc "c" () {
 	if drawer_open {
 		// the note: shows the code as three small colored squares
 		draw_rect({395, 345, 120, 50}, 220, 210, 180)
-		draw_rect({405, 360, 24, 24}, 60, 150, 70)  // green
-		draw_rect({445, 360, 24, 24}, 170, 60, 60)  // red
-		draw_rect({485, 360, 24, 24}, 60, 80, 170)  // blue
+		draw_rect({405, 360, 24, 24}, 60, 150, 70) // green
+		draw_rect({445, 360, 24, 24}, 170, 60, 60) // red
+		draw_rect({485, 360, 24, 24}, 60, 80, 170) // blue
 	}
 
 	// key (only exists if revealed and not taken)
@@ -287,7 +290,12 @@ frame :: proc "c" () {
 	// progress pips for the code
 	for i in 0 ..< len(CODE) {
 		on := i < code_progress
-		draw_rect({f32(W - 110 + i * 34), f32(H - 40), 24, 24}, on ? 90 : 45, on ? 200 : 50, on ? 110 : 60)
+		draw_rect(
+			{f32(W - 110 + i * 34), f32(H - 40), 24, 24},
+			on ? 90 : 45,
+			on ? 200 : 50,
+			on ? 110 : 60,
+		)
 	}
 
 	sg.begin_pass({action = pass_action, swapchain = sglue.swapchain()})
@@ -304,14 +312,17 @@ cleanup :: proc "c" () {
 
 main :: proc() {
 	rt_ctx = context
-	sapp.run({
-		init_cb = init,
-		frame_cb = frame,
-		event_cb = event,
-		cleanup_cb = cleanup,
-		width = W,
-		height = H,
-		window_title = "T13 - Point And Click",
-		logger = {func = slog.func},
-	})
+	sapp.run(
+		{
+			init_cb = init,
+			frame_cb = frame,
+			event_cb = event,
+			cleanup_cb = cleanup,
+			width = W,
+			height = H,
+			window_title = "T13 - Point And Click",
+			logger = {func = slog.func},
+		},
+	)
 }
+
